@@ -1,6 +1,6 @@
-$Id: mik-notes.txt,v 1.1 2021/07/17 05:51:26 vazquez Exp vazquez $
+$Id: mik-notes.txt,v 1.1 2021/07/17 05:51:26 rdup Exp  rdup $
 $Log: mik-notes.txt,v $
-Revision 1.1  2021/07/17 05:51:26  vazquez
+Revision 1.1  2021/07/17 05:51:26  rdup
 Initial revision
 
 MIKBUG and MINIBUG are ROM monitors for the 6800 from Motorola. Mike Holley at swtpc.com,
