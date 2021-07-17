@@ -1,0 +1,13 @@
+Free 6809 Memory map
+
+0000-1fff	8K SRAM
+2000-9fff	unused, reserved
+A000		8-bit digital output register
+C000		6850 ACIA register 0
+C001		6850 ACIA register 1
+E000-ffff	8K EPROM 
+
+Interrupts occur every 3.333 mS on the IRQ line.
+Baud rate is selectable by the 4-position DIP switch near 
+CD4060
+

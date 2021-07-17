@@ -1,0 +1,264 @@
+* FreeBug - Monitor ROM for the Free 6809
+* by Russell Hoffman 1992
+
+
+ACIA	EQU $C000 Acia base address
+PPORT	EQU $A000 Data port address
+STACKTOP	EQU $0100
+	ORG 0
+JRESV	RMB 2
+JSWI3	RMB 2
+JSWI2	RMB 2
+JFIRQ	RMB 2
+JIRQ	RMB 2
+JSWIV	RMB 2
+JNMI	RMB 2
+ECHO RMB 1
+CKSUM RMB 2
+TMP1 RMB 2
+TMP2 RMB 2
+	
+	ORG $F800
+	FDB SEROUT
+	FDB GETC
+	FDB PRINTF
+	FDB GETBYT
+	FDB GETADR
+*
+* X register gets 16-bit hex address
+*
+GETADR	pshs D
+	bsr GETBYT
+	bne BADADR
+	tfr a,b
+	bsr GETBYT
+	bne BADADR
+	exg b,a
+	tfr d,x
+	puls D
+	orcc #$04
+	rts
+BADADR	puls D
+	andcc #$fb
+	rts
+
+GETBYT	bsr HEXIN
+	bne BADBYT
+	sta TMP1
+	bsr HEXIN
+	bne BADBYT
+	sta TMP2
+	lda TMP1
+	asla
+	asla
+	asla
+	asla
+	adda TMP2
+	orcc #$04 set Z bit
+	rts
+BADBYT	andcc #$fb	clear Z bit
+	rts
+	
+*
+*      HEXADECIMAL DIGIT INPUT ROUTINE
+* (Taken from Chuck Adams' HUMBUG )
+*   INPUT A SINGLE HEX DIGIT TO ACCA VIA ACIA.  IF THE
+*      INPUT CHARACTER IS A HEX DIGIT IT IS CONVERTED
+*      TO BINARY IN ACCA AND BIT Z OF CCR IS SET.  IF
+*      THE INPUT IS A NONHEX CHARACTER, IT IS RETURNED
+*      IN ACCA AND BIT Z IS RESET.
+*
+HEXIN BSR GETC GET CHARACTER
+ CMPA #'0 TEST FOR DIGIT
+ BLO HEXN INVALID, RETURN
+ CMPA #'9
+ BHI HEXLT
+ SUBA #'0 CONVERT TO BINARY
+ BRA HEXINR
+HEXLT	anda #$df	upper-case-ize
+ CMPA #'A TEST FOR A-F
+ BLO HEXN INVALID, RETURN
+ CMPA #'F
+ BHI HEXN INVALID, RETURN
+ SUBA #$37 CONVERT TO BINARY
+HEXINR ORCC #$04 SET BIT Z
+ RTS
+HEXN ANDCC #$FB RESET BIT Z
+ RTS
+
+*
+* get a character via polling ACIA into A
+*
+GETC	lda ACIA
+	bita	#1
+	beq	GETC
+	lda ACIA+1
+	tst ECHO
+	bne	GET2
+	rts
+GET2	bsr SEROUT
+	rts
+*
+* Output a string pointed to by X, terminated with $04
+*
+PRINTF	LDA ,X+
+	CMPA #04
+	BNE PRINT2
+	RTS
+PRINT2	BSR SEROUT
+	BRA PRINTF
+*
+* Output character in A register
+*
+SEROUT	PSHS B
+SER1	LDB ACIA
+	BITB #02
+	BEQ SER1
+	STA ACIA+1
+	PULS B
+	RTS
+
+*
+* Interrupt vector jumptable
+*
+RETINT	RTI
+SWI3	JMP [JSWI3]
+SWI2	JMP [JSWI2]
+FIRQ	JMP [JFIRQ]
+IRQ	JMP [JIRQ]
+SWIV	JMP [JSWIV]
+NMI	JMP [JNMI]
+
+*
+* BEGIN - start monitor execution
+*
+BEGIN	orcc #$ff turn off interrupts
+	CLRA
+	tfr a,dp
+	LDS #STACKTOP  setup system stack
+	LDX #JRESV
+	LDD #RETINT
+	STD 0,X++	setup interrupt jumptable
+	STD 0,X++
+	STD 0,X++
+	STD 0,X++
+	STD 0,X++
+	STD 0,X++
+	STD 0,X++
+	LDA #$03 reset ACIA
+	STA ACIA
+	LDA #$15 init ACIA
+	STA ACIA
+	LDX #HELLO
+	JSR PRINTF say hello
+	
+CMD	LDX #CMDPROMPT Get next cmd
+	JSR PRINTF
+	LDA #1
+	STA ECHO Turn echo on
+	JSR GETC
+	cmpa #$7f
+	bgt BOGUS
+	cmpa #$0d
+	beq CRPRESS
+	CMPA #'?
+	beq HELP
+	cmpa #'s
+	beq SREC
+	cmpa #'j
+	beq JUMP
+CMHUH	ldx #HUH
+	jsr PRINTF
+	bra CMD
+
+HELP	ldx #HELPMSG
+	jsr PRINTF
+	bra CMD
+
+JUMP	LDA #$20
+	jsr SEROUT
+	JSR GETADR
+	bne	CMHUH
+	jsr ,X
+	bra CMD
+
+BOGUS	LDX #BMSG
+	jsr	PRINTF
+	BRA CMD
+
+CRPRESS	LDA #$0a
+	JSR SEROUT
+	BRA CMD
+
+SREC	CLR ECHO
+	
+*
+*       LOAD/VERIFY FROM S FORMAT TAPE
+*	Adapted from Chuck Adams' HUMBUG
+
+LOAD LDB #$FF SET LOAD/VERIFY FLAG
+ BRA LDVF
+VERIFY CLRB        CLEAR LOAD/VERIFY FLAG
+LDVF PSHS B
+LNXTLN CLR CKSUM ZERO CHECKSUM
+LNXTCH JSR GETC
+ CMPA #'S SEARCH FOR RECORD
+ BNE LNXTCH
+ JSR GETC
+ CMPA #'9 S9 - EXIT
+ BEQ LVEXIT
+ CMPA #'1 S1 - BEGINNING OF RECORD
+ BNE LNXTCH
+ JSR GETBYT GET BYTE COUNT
+ BNE LVEXIT
+ PSHS A
+ JSR GETADR GET ADDRESS
+ BNE LVEXIT
+ PULS B PULL BYTE COUNT
+ SUBB #2 	;	ADJUST BYTE COUNT
+LBYTLP JSR GETBYT READ NEXT BYTE
+ BNE LVEXIT
+ DECB
+ BEQ LELP LADS BYTE
+ TST ,S TEST LOAD/VERIFY FLAG
+ BEQ LVFY
+ STA ,X IF LOAD THEN STORE BYTE
+LVFY CMPA ,X+ VERIFY INPUT BYTE
+ BNE LVEXIT
+ BRA LBYTLP
+LELP INC CKSUM TEST CHECKSUM
+ BEQ LNXTLN
+LVEXIT JMP CMD
+
+HELLO	FCB $0d, $0a
+	FCC "FreeBug 6809 v1.0"
+	FCB $0d, $0a, $04
+CMDPROMPT	FCC "> "
+	FCB	$04
+HUH	FCC "???"
+	FCB $0d, $0a, $04
+
+BMSG	FCC "Your terminal is setting the MSB"
+	FCB $0d, $0a, $04
+
+HELPMSG	FCB $0d,$0a, $0a, $0a
+	FCC	"---- FreeBug v1.0 Help ----"
+	FCB $0d, $0a, $0a
+	FCC "? - help"
+	FCB $0d, $0a
+	FCC "s - download s-records"
+	FCB $0d, $0a
+	FCC "j - jump to code"
+	FCB $0d, $0a, $0a, $0a, $04
+
+ ORG $FFF0	Reset and interrupt vectors.
+ FDB BEGIN	
+ FDB SWI3	
+ FDB SWI2	
+ FDB FIRQ	
+ FDB IRQ	
+ FDB SWIV	
+ FDB NMI	
+ FDB BEGIN	
+
+

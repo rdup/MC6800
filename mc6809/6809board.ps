@@ -1,0 +1,1978 @@
+%!This is NOT PS-Adobe-1.0
+%%%DocumentFonts: (atend)
+%%%Creator: DPPostScript V2.0
+%%%Pages: 1
+%%%BoundingBox: (atend)
+%%%EndComments
+%%%EndProlog
+%%%Page: 1 1
+/dpSave save def 2000 dict begin%giant number of DP nested symbols
+systemdict /setpacking known{/dpSavePacking currentpacking def true setpacking}if
+%/dpstarttime usertime def%performance evaluation
+.72 dup scale%100 pixels DP per inch
+/dpBDF{bind def}def
+%graphics state re. objects on graphics list: color, width, dash
+/dpColor 0 def /dpWidth 1 def /dpDash 0 def
+%dp state re. objects being rendered: font, layer and visibility
+/dpFont -1 def /dpLayer -1 def /dpLVis false def
+0 setgray 0.7 setlinewidth []0 setdash
+/dpCV%->set color, 0 white because never called, 1 black, 2..7 less black
+{dup /dpColor exch def
+ dup 1 lt{pop 1}{dup 7 gt{pop 7}if}ifelse 1 sub 7 div setgray
+}dpBDF
+/dpLW%->set line width, 1 is the usual
+{dup /dpWidth exch def 0.7 mul setlinewidth
+}dpBDF%!!!FIX
+/dpST%StyleNum->SetStyle%1 dots, 2 dashes, 3 dot-dash, otherwise solid
+{dup /dpDash exch def
+ dup dup 1 lt exch 3 gt or{pop 0}if 
+ dup 0 eq{pop[]}{dup 1 eq{pop[2 6]}{2 eq{[8 8]}{[2 6 8 8]}ifelse}ifelse}ifelse
+ 0 setdash%!!!FIX Center pattern
+}dpBDF
+/dpPINF /Courier findfont[1.0285 0 0 1.1 0 0]makefont 700 72 div scalefont def%Pin Number Font
+/dpPFH dpPINF /FontBBox get 3 get dpPINF /FontMatrix get 3 get mul neg 1.0 sub def
+/dpFontDict 17 dict def dpFontDict begin%map font families to font names
+(AvantGarde)[(AvantGarde-Book)(AvantGarde-Demi)(AvantGarde-BookOblique)(AvantGarde-DemiOblique)]def
+(Bookman)[(Bookman-Light)(Bookman-Demi)(Bookman-LightItalic)(Bookman-DemiItalic)]def
+(Courier)[(Courier)(Courier-Bold)(Courier-Oblique)(Courier-BoldOblique)]def
+(Helvetica)[(Helvetica)(Helvetica-Bold)(Helvetica-Oblique)(Helvetica-BoldOblique)]def
+(Helvetica-Narrow)[(Helvetica-Narrow)(Helvetica-Narrow-Bold)(Helvetica-Narrow-Oblique)(Helvetica-Narrow-BoldOblique)]def
+(LubalinGraph)[(LubalinGraph-Book)(LubalinGraph-Demi)(LubalinGraph-BookOblique)(LubalinGraph-DemiOblique)]def
+(NewCenturySchlbk)[(NewCenturySchlbk-Roman)(NewCenturySchlbk-Bold)(NewCenturySchlbk-Italic)(NewCenturySchlbk-BoldItalic)]def
+(Palatino)[(Palatino-Roman)(Palatino-Bold)(Palatino-Italic)(Palatino-BoldItalic)]def
+(Souvenir)[(Souvenir-Light)(Souvenir-Demi)(Souvenir-LightItalic)(Souvenir-DemiItalic)]def
+(Symbol)[(Symbol)(Symbol)(Symbol)(Symbol)]def
+(Times)[(Times-Roman)(Times-Bold)(Times-Italic)(Times-BoldItalic)]def
+(Gacha)Courier def%fake font names to help dp out
+(Avantgarde)AvantGarde def
+(Helvetica-narrow)Helvetica-Narrow def
+(Lubalingraph)LubalinGraph def
+(Newcenturyschlbk)NewCenturySchlbk def
+(Times-roman)Times def
+end
+/dpDefF%FNum(Attributes)Size Rot(FamilyName)(PerqName)->Create Font
+{pop%PerqName
+ 4 -1 roll /dpAttr exch def%Attributes "r, b, i, bi"
+ dup dpFontDict exch known
+ {dpFontDict exch get aload pop
+  dpAttr(r)eq{pop pop pop}
+  {dpAttr(b)eq{pop pop exch pop}
+   {dpAttr(i)eq{pop exch pop exch pop}
+    {4 1 roll pop pop pop}ifelse%bold-italic
+   }ifelse
+  }ifelse
+ }if
+ dup FontDirectory exch known{}{pop(Courier)}ifelse
+ findfont[1.0285 0 0 1.1 0 0.143]makefont
+ exch dup 0 ne{60.0 div matrix rotate makefont}{pop}ifelse
+ exch 100 mul 72 div scalefont
+ exch dpFS# dpFStr copy cvs pop dpFStr
+ exch def
+}dpBDF
+/dpFS#(#dpF)def
+/dpFStr 4 string def
+/dpF%FNum->Set current Font
+{dup /dpFont exch def dpFS# dpFStr copy cvs pop dpFStr load setfont
+}dpBDF
+/dpDefL%LNum(LayerName)(RWO)->Define Layer
+{exch pop%Name
+ exch dpLS# dpLStr copy cvs pop dpLStr
+ exch(R)search{pop pop pop true}{pop false}ifelse def
+}dpBDF
+/dpLS#(#dpL)def
+/dpLStr 4 string def
+/dpLV%LNum->determine Layer visiblity
+{dup dpLayer eq
+ {pop dpLVis}
+ {dup /dpLayer exch def dpLS# dpLStr copy cvs pop dpLStr load dup /dpLVis exch def
+ }ifelse
+}dpBDF
+/dpD%X Y Layer->Dot
+{dpDVp
+ {dup dpLayer eq{pop dpLVis}{dpLV}ifelse
+  {newpath 1.6 0.0 360.0 arc fill
+  }{pop pop}ifelse
+ }{pop pop pop}ifelse
+}dpBDF
+/dpP%(PinNumber)Orient X Y Layer Color->Pin
+{dup 0 ne
+ {dup dpColor eq{pop}{dpCV}ifelse
+  dup dpLayer eq{pop dpLVis}{dpLV}ifelse
+  {gsave translate
+   dpPVp
+   {0.4 setlinewidth 0 setlinecap -1.0 -1.0 moveto 1.0 1.0 lineto -1.0 1.0 moveto 1.0 -1.0 lineto stroke
+   }if
+   dpPSVp
+   {dpPINF setfont
+    dup 1 eq
+    {pop 2.0 2.0}
+    {dup 2 eq
+     {pop dup stringwidth pop -2.0 exch sub 2.0}
+     {dup 3 eq
+      {pop dup stringwidth pop -2.0 exch sub dpPFH}
+      {4 eq
+       {2.0 dpPFH}{2.0 2.0}ifelse
+      }ifelse
+     }ifelse
+    }ifelse
+    moveto show
+   }{pop pop}ifelse
+   grestore
+  }{pop pop pop pop}ifelse
+ }{pop pop pop pop pop pop}ifelse
+}dpBDF
+/dpL%XEnd YEnd XStart YStart Thickness Style Layer Color->Line
+{dup 0 ne
+ {dup dpColor eq{pop}{dpCV}ifelse
+  dup dpLayer eq{pop dpLVis}{dpLV}ifelse
+  {dup dpDash eq{pop}{dpST}ifelse dup dpWidth eq{pop}{dpLW}ifelse
+   moveto lineto stroke
+  }{pop pop pop pop pop pop}ifelse
+ }{pop pop pop pop pop pop pop pop}ifelse
+}dpBDF
+/dpS%(String)XLL YLL Font Layer Color%XUR YUR->String
+{dup 0 ne
+ {dup dpColor eq{pop}{dpCV}ifelse
+  dup dpLayer eq{pop dpLVis}{dpLV}ifelse
+  {dup dpFont eq{pop}{dpF}ifelse
+   moveto show
+  }{pop pop pop pop}ifelse
+ }{pop pop pop pop pop pop}ifelse
+}dpBDF
+/dpC%XCent YCent Rad Begin End Thickness Style Layer Color->Circle
+{dup 0 ne
+ {dup dpColor eq{pop}{dpCV}ifelse
+  dup dpLayer eq{pop dpLVis}{dpLV}ifelse
+  {dup dpDash eq{pop}{dpST}ifelse dup dpWidth eq{pop}{dpLW}ifelse
+   newpath arc stroke
+  }{pop pop pop pop pop pop pop}ifelse
+ }{pop pop pop pop pop pop pop pop pop}ifelse
+}dpBDF
+/dpSMid%X1 Y1 X2 Y2->(X1+X2)/2 (Y1+Y2)/2%used in spline generation
+{3 -1 roll add 0.5 mul 3 1 roll add 0.5 mul exch}dpBDF
+/dpSRight%X1 Y1 X2 Y2->X1 Y1 (X1*K+X2*(1-K)) (Y1*K+Y2*(1-K))
+{0.333 mul 2 index 0.667 mul add exch
+ 0.333 mul 3 index 0.667 mul add exch}dpBDF
+/dpSLeft%X1 Y1 X2 Y2->X1 Y1 (X1*(1-K)+X2*K) (Y1*(1-K)+Y2*K)
+{0.667 mul 2 index 0.333 mul add exch
+ 0.667 mul 3 index 0.333 mul add exch}dpBDF
+/dpSpl%[X0 Y0...]Type NumbKnots XStart YStart Thickness Style Layer Color->Spline
+{dup 0 ne
+ {dup dpColor eq{pop}{dpCV}ifelse
+  dup dpLayer eq{pop dpLVis}{dpLV}ifelse
+  {dup dpDash eq{pop}{dpST}ifelse dup dpWidth eq{pop}{dpLW}ifelse
+   gsave translate
+   3 sub dup /dpSNum exch def%0 for 3 knots, 1 for 4 
+   0 lt
+   {pop aload pop moveto lineto
+   }%only 2 points
+   {pop%ignore spline type
+    aload pop 2 copy moveto%move to end
+%stack contains 4 3 2 1.5; at end want 4 3 2.5 then 1.75 2.25 2.5
+%roll negative pops, positive pushes
+    dpSNum
+    {dpSRight% 4 3 2 1.75
+     6 2 roll% 4 1.75 3 2
+     4 copy dpSMid% 4 1.75 3 2 2.5
+     4 2 roll% 4 1.75 3 2.5 2
+     dpSLeft% 4 1.75 3 2.5 2.25
+     8 -2 roll% 4 3 2.5 2.25 1.75
+     4 2 roll% 4 3 2.5 1.75 2.25
+     5 index 5 index% 4 3 2.5 1.75 2.25 2.5
+     curveto
+    }repeat
+%remaining 7.5 7 6.5, we want 6.75 7.25 7.5
+    dpSRight%7.5 7 6.75
+    6 2 roll%6.75 7.5 7
+    dpSLeft%6.75 7.5 7.25
+    4 2 roll%6.75 7.25 7.5
+    curveto
+   }ifelse
+   stroke grestore
+  }{pop pop pop pop pop pop pop}ifelse
+ }{pop pop pop pop pop pop pop pop pop}ifelse
+}dpBDF
+/dpI%(SymbolName)XScl YScl Rot XCent YCent Layer->Instance
+{dup dpLayer eq{pop dpLVis}{dpLV}ifelse
+ {matrix currentmatrix 7 1 roll
+  translate rotate scale
+  mark exch load exec counttomark{exec}repeat pop
+  setmatrix
+ }{pop pop pop pop pop pop}ifelse
+}dpBDF
+%(Name){{Code}}dpBDF%XWidth YHeight->Symbol Def
+%Post processors might be interested in the bounding box info.
+%within the code section there is a max of 400 symbols
+%newpath clippath pathbbox pop pop 0.5 add exch 0.5 add exch translate%(0,0)lower left visible
+/dpStart%set up for picture
+{/PB where{pop true}{false}ifelse%see if a SCRIBE symbol is defined
+ /TeXDict where{pop true}{false}ifelse%see if a DVI-PS symbol is defined
+ or /dpIncluded exch def%remember whether to offset output.
+ dpIncluded{}%nothing fancy if included in some other document
+ {26.5 20.5 translate%fake origin till I understand the LPS40. 0.5 is important
+  dp11x17
+  {statusdict /11x17tray known
+   {statusdict begin 11x17tray end .72 dup scale
+    dpRotate{26.5 20.5 translate}{1073.5 20.5 translate 90 rotate}ifelse
+   }{dpRotate{}{796 0 translate 90 rotate}ifelse 8.0 10.5 div dup scale
+   }ifelse
+  }{dpRotate{796 0 translate 90 rotate}if
+  }ifelse
+ }ifelse
+}dpBDF
+/dpDone%clean up at end of picture
+{dpIncluded{}{showpage}ifelse
+ systemdict /setpacking known{dpSavePacking setpacking}if
+% /Times-Italic findfont 8 scalefont setfont 1 72 mul .5 72 mul moveto(Elapsed time: )show
+%  usertime dpstarttime sub cvr 1000.0 div 20 string cvs show( seconds)show showpage
+ end dpSave restore
+}dpBDF
+1 setlinecap%round ended lines
+1 setlinejoin%round line intersections
+/dpPVp false def%Pins default invisible
+/dpPSVp false def%Pin Strings default invisible
+/dpDVp false def%Intersection Dots default invisible
+/dpRotate false def%Rotate image while printing
+/dp11x17 false def%Use large paper if available
+newpath
+%!Everything before this line is a standard preamble.
+%!PS made by DP. Prepend DPPSHeader to print.
+%; DP ver. 5.30
+%; 30-Sep-92 12:41:40
+%;SYMBOL: 6809MEMCON
+%;CALLS:
+%;SYMBOL: 6809A
+%;CALLS:
+%;SYMBOL: 6809AD
+%;CALLS:
+%;SYMBOL: 6809D
+%;CALLS:
+%;SYMBOL: 74LS138
+%;CALLS: $$16:43:11 $$17:44:06 $$17:43:56 $$17:43:44 $$16:42:55 $$17:46:35 $$17:46:22 $$17:45:35 $$17:45:26 $$17:45:16 $$17:45:05 $$17:44:56 $$17:44:48 $$17:44:38 $$17:44:26
+%;SYMBOL: EDGE.O
+%;CALLS:
+%;SYMBOL: EDGE.OH
+%;CALLS:
+%;SYMBOL: 6264
+%;CALLS: $$08:00:59 $$08:01:01 $$08:01:17 $$08:01:19 $$08:01:21 $$08:01:28 $$08:01:29 $$07:59:54 $$07:59:58 $$08:00:00 $$08:00:03 $$08:00:06 $$08:00:11 $$08:00:13 $$08:00:16 $$08:00:18 $$08:00:21 $$08:00:28 $$08:00:31 $$08:00:33 $$08:00:57 $$08:02:33 $$08:02:31 $$08:02:29 $$08:02:26 $$08:02:22
+%;SYMBOL: LED
+%;CALLS: $$19:57:38 $$19:57:54
+%;SYMBOL: RESISTOR
+%;CALLS:
+%;SYMBOL: 74LS32
+%;CALLS: $$15:41:25 $$15:41:03 $$18:20:55
+%;SYMBOL: 74LS374
+%;CALLS: $$20:32:07 $$20:13:44 $$20:13:42 $$20:13:40 $$20:13:38 $$20:13:36 $$20:13:34 $$20:13:32 $$20:13:29 $$20:00:30 $$20:07:03 $$20:07:05 $$20:07:07 $$20:07:09 $$20:07:11 $$20:07:12 $$20:07:13 $$20:07:15
+%;SYMBOL: 74LS00
+%;CALLS: $$16:44:15 $$16:44:19 $$16:44:24
+%;SYMBOL: MC1488.SEC1
+%;CALLS: $$17:20:55 $$17:21:04 $$17:21:09 $$17:21:14
+%;SYMBOL: MC1489A
+%;CALLS: $$18:07:55 $$18:07:44 $$18:07:28
+%;SYMBOL: 74LS123
+%;CALLS: $$15:57:12 $$15:57:14 $$15:57:22 $$15:57:26 $$15:57:30 $$21:03:41 $$21:03:44
+%;SYMBOL: CAPACITOR
+%;CALLS: $$13:35:00.$ $$13:35:19.$
+%;SYMBOL: XTAL
+%;CALLS:
+%;SYMBOL: SIPCOM
+%;CALLS: $$15:47:26
+%;SYMBOL: GND
+%;CALLS: $$17:17:13
+%;SYMBOL: 2764
+%;CALLS: $$08:01:29 $$08:01:28 $$08:01:21 $$08:01:19 $$08:01:17 $$08:01:01 $$08:00:59 $$08:00:57 $$08:00:51 $$08:00:45 $$08:00:42 $$08:00:39 $$08:00:36 $$08:00:33 $$08:00:31 $$08:00:28 $$08:00:21 $$08:00:18 $$08:00:16 $$08:00:13 $$08:00:11 $$08:00:06 $$08:00:03 $$08:00:00 $$07:59:58 $$07:59:54
+%;SYMBOL: EDGE.I
+%;CALLS:
+%;SYMBOL: EDGE.IH
+%;CALLS:
+/dpPSVp true def%pin strings visible
+/dpPVp true def%pins visible
+/dpDVp true def%intersection dots visible
+dpStart
+0.994 0.994 scale %scale drawing to fit page
+393 528 translate %lower left corner is (0,0)
+dpIncluded{}{9 0 translate}ifelse%center drawing on page
+1 (r) 7 0 (Gacha) (gacha7) dpDefF
+2 (r) 10 0 (Gacha) (gacha10) dpDefF
+6 (r) 7 0 (Gachaovb) (gachaovb7) dpDefF
+1 (COMMENT) (RWO) dpDefL
+3 (STANDARD) (RWO) dpDefL
+%@grids 3 6 1
+(SEDGE.IH){{%42 12
+21 0 15 0 1 0 3 1 dpL
+15 0 9 -6 1 0 3 1 dpL
+15 0 9 6 1 0 3 1 dpL
+9 -6 -21 -6 1 0 3 1 dpL
+-21 -6 -21 6 1 0 3 1 dpL
+}}def
+(SEDGE.I){{%42 12
+21 0 15 0 1 0 3 1 dpL
+15 0 9 -6 1 0 3 1 dpL
+15 0 9 6 1 0 3 1 dpL
+-21 -6 -21 6 1 0 3 1 dpL
+9 6 -21 6 1 0 3 1 dpL
+}{9 -6 -21 -6 1 0 3 1 dpL
+}}def
+(S$$07:59:54){{%16 9
+(A0)-4 -4 1 3 1 dpS%12 9
+(10)2 -8 1 3 1 dpP
+}}def
+(S$$07:59:58){{%16 9
+(A1)-4 -4 1 3 1 dpS%12 9
+(9)2 -8 1 3 1 dpP
+}}def
+(S$$08:00:00){{%16 9
+(A2)-4 -4 1 3 1 dpS%12 9
+(8)2 -8 1 3 1 dpP
+}}def
+(S$$08:00:03){{%16 9
+(A3)-4 -4 1 3 1 dpS%12 9
+(7)2 -8 1 3 1 dpP
+}}def
+(S$$08:00:06){{%16 9
+(A4)-4 -4 1 3 1 dpS%12 9
+(6)2 -8 1 3 1 dpP
+}}def
+(S$$08:00:11){{%16 9
+(A5)-4 -4 1 3 1 dpS%12 9
+(5)2 -8 1 3 1 dpP
+}}def
+(S$$08:00:13){{%16 9
+(A6)-4 -4 1 3 1 dpS%12 9
+(4)2 -8 1 3 1 dpP
+}}def
+(S$$08:00:16){{%16 9
+(A7)-4 -4 1 3 1 dpS%12 9
+(3)2 -8 1 3 1 dpP
+}}def
+(S$$08:00:18){{%16 9
+(A8)-4 -4 1 3 1 dpS%12 9
+(25)2 -8 1 3 1 dpP
+}}def
+(S$$08:00:21){{%16 9
+(A9)-4 -4 1 3 1 dpS%12 9
+(24)2 -8 1 3 1 dpP
+}}def
+(S$$08:00:28){{%22 9
+(A10)-7 -4 1 3 1 dpS%18 9
+(21)2 -11 1 3 1 dpP
+}}def
+(S$$08:00:31){{%22 9
+(A11)-7 -4 1 3 1 dpS%18 9
+(23)2 -11 1 3 1 dpP
+}}def
+(S$$08:00:33){{%22 9
+(A12)-7 -4 1 3 1 dpS%18 9
+(2)2 -11 1 3 1 dpP
+}}def
+(S$$08:00:36){{%22 9
+(VPP)-7 -4 1 3 1 dpS%18 9
+(1)2 -11 1 3 1 dpP
+}}def
+(S$$08:00:39){{%22 9
+(~PGM)-8 -4 6 3 1 dpS%19 9
+(27)2 -11 1 3 1 dpP
+}}def
+(S$$08:00:42){{%16 9
+(NC)-4 -4 1 3 1 dpS%12 9
+(26)2 -8 1 3 1 dpP
+}}def
+(S$$08:00:45){{%16 9
+(~CE)-5 -4 6 3 1 dpS%13 9
+(20)2 -8 1 3 1 dpP
+}}def
+(S$$08:00:51){{%16 9
+(22)2 -8 1 3 1 dpP
+(~OE)-5 -4 6 3 1 dpS%13 9
+}}def
+(S$$08:00:57){{%12 11
+(11)1 -1 6 3 1 dpP
+(D0)-6 -5 1 3 1 dpS%12 9
+}}def
+(S$$08:00:59){{%12 11
+(12)1 -1 6 3 1 dpP
+(D1)-6 -5 1 3 1 dpS%12 9
+}}def
+(S$$08:01:01){{%12 11
+(13)1 -1 6 3 1 dpP
+(D2)-6 -5 1 3 1 dpS%12 9
+}}def
+(S$$08:01:17){{%12 11
+(15)1 -1 6 3 1 dpP
+(D3)-6 -5 1 3 1 dpS%12 9
+}}def
+(S$$08:01:19){{%12 11
+(16)1 -1 6 3 1 dpP
+(D4)-6 -5 1 3 1 dpS%12 9
+}}def
+(S$$08:01:21){{%12 11
+(17)1 -1 6 3 1 dpP
+(D5)-6 -5 1 3 1 dpS%12 9
+}}def
+(S$$08:01:28){{%12 11
+(18)1 -1 6 3 1 dpP
+(D6)-6 -5 1 3 1 dpS%12 9
+}}def
+(S$$08:01:29){{%12 11
+(19)1 -1 6 3 1 dpP
+(D7)-6 -5 1 3 1 dpS%12 9
+}}def
+(S2764){{%162 240
+(1)1 81 -60 3 1 dpP
+(26)1 81 -84 3 1 dpP
+(EPROM)-24 18 1 3 1 dpS%30 9
+-81 -120 -81 120 1 0 3 1 dpL
+81 120 -81 120 1 0 3 1 dpL
+}{81 -120 81 120 1 0 3 1 dpL
+(2764)-27 51 2 3 1 dpS%36 13
+(8Kx8)-21 30 1 3 1 dpS%24 9
+(8)1 81 78 3 1 dpP
+(7)1 81 66 3 1 dpP
+(6)1 81 54 3 1 dpP
+(5)1 81 42 3 1 dpP
+}{(4)1 81 30 3 1 dpP
+(3)1 81 18 3 1 dpP
+(9)1 81 90 3 1 dpP
+(10)1 81 102 3 1 dpP
+(25)1 81 6 3 1 dpP
+(24)1 81 -6 3 1 dpP
+(21)1 81 -18 3 1 dpP
+(23)1 81 -30 3 1 dpP
+}{(2)1 81 -42 3 1 dpP
+81 -120 -81 -120 1 0 3 1 dpL
+(11)4 -63 -120 3 1 dpP
+(12)4 -45 -120 3 1 dpP
+(13)4 -27 -120 3 1 dpP
+(15)4 -9 -120 3 1 dpP
+(16)4 9 -120 3 1 dpP
+}{(17)4 27 -120 3 1 dpP
+(18)4 45 -120 3 1 dpP
+(19)4 63 -120 3 1 dpP
+(20)1 81 -96 3 1 dpP
+(22)1 81 -108 3 1 dpP
+(27)1 81 -72 3 1 dpP
+(S$$07:59:54)1 1 0 -73 101 3 dpI
+}{(S$$07:59:58)1 1 0 -73 89 3 dpI
+(S$$08:00:00)1 1 0 -73 77 3 dpI
+(S$$08:00:03)1 1 0 -73 65 3 dpI
+(S$$08:00:06)1 1 0 -73 53 3 dpI
+(S$$08:00:11)1 1 0 -73 41 3 dpI
+(S$$08:00:13)1 1 0 -73 29 3 dpI
+(S$$08:00:16)1 1 0 -73 17 3 dpI
+}{(S$$08:00:18)1 1 0 -73 5 3 dpI
+(S$$08:00:21)1 1 0 -73 -7 3 dpI
+(S$$08:00:28)1 1 0 -70 -19 3 dpI
+(S$$08:00:31)1 1 0 -70 -31 3 dpI
+(S$$08:00:33)1 1 0 -70 -43 3 dpI
+(S$$08:00:36)1 1 0 -70 -61 3 dpI
+(S$$08:00:39)1 1 0 -70 -73 3 dpI
+}{(S$$08:00:42)1 1 0 -73 -85 3 dpI
+(S$$08:00:45)1 1 0 -73 -97 3 dpI
+(S$$08:00:51)1 1 0 -73 -109 3 dpI
+(S$$08:00:57)1 1 0 -62 114 3 dpI
+(S$$08:00:59)1 1 0 -44 114 3 dpI
+(S$$08:01:01)1 1 0 -26 114 3 dpI
+(S$$08:01:17)1 1 0 -8 114 3 dpI
+}{(S$$08:01:19)1 1 0 10 114 3 dpI
+(S$$08:01:21)1 1 0 28 114 3 dpI
+(S$$08:01:28)1 1 0 46 114 3 dpI
+(S$$08:01:29)1 1 0 64 114 3 dpI
+}}def
+(S$$17:17:13){{%21 9
+(1)1 -10 -4 3 0 dpP
+(Gnd)-7 -4 1 3 0 dpS%18 9
+}}def
+(SGND){{%27 13
+(S$$17:17:13)1 1 0 3 2 3 dpI
+-1 -2 -13 -2 1 0 3 1 dpL
+-3 -4 -11 -4 1 0 3 1 dpL
+-5 -6 -9 -6 1 0 3 1 dpL
+}}def
+(S$$15:47:26){{%12 9
+(2)1 -6 -3 3 1 dpP
+(A)0 -4 1 3 0 dpS%6 9
+}}def
+(SSIPCOM){{%28 54
+(S$$15:47:26)1 1 0 -4 -23 3 dpI
+(+5V)-4 18 1 3 1 dpS%18 9
+-10 22 2 0.0 360.0 1 0 3 1 dpC
+-14 -10 -6 -6 1 0 3 1 dpL
+-10 20 -10 4 1 0 3 1 dpL
+}{-14 -18 -6 -14 1 0 3 1 dpL
+-14 -2 -6 2 1 0 3 1 dpL
+-6 -6 -14 -2 1 0 3 1 dpL
+-6 -14 -14 -10 1 0 3 1 dpL
+-6 2 -10 4 1 0 3 1 dpL
+-10 -20 -14 -18 1 0 3 1 dpL
+}{-10 -20 -10 -26 1 0 3 1 dpL
+}}def
+(SXTAL){{%36 53
+(      )-18 -26 1 3 1 dpS%36 9
+(1)2 -12 1 3 1 dpP
+(2)1 12 1 3 1 dpP
+5 1 12 1 1 0 3 1 dpL
+(XTAL)-12 18 1 3 1 dpS%24 9
+}{-5 1 -12 1 1 0 3 1 dpL
+-5 -14 -5 16 1 0 3 1 dpL
+5 16 5 -14 1 0 3 1 dpL
+3 -14 -3 -14 1 0 3 1 dpL
+3 -14 3 16 1 0 3 1 dpL
+3 16 -3 16 1 0 3 1 dpL
+}{-3 -14 -3 16 1 0 3 1 dpL
+(    )-12 -26 1 3 1 dpS%24 9
+}}def
+(S$$13:35:19.$){{%6 10
+(A)-3 -5 1 3 0 dpS%6 9
+(1)2 -1 5 3 1 dpP
+}}def
+(S$$13:35:00.$){{%6 10
+(2)1 -1 5 3 1 dpP
+(B)-3 -5 1 3 0 dpS%6 9
+}}def
+(SCAPACITOR){{%36 24
+(S$$13:35:19.$)1 1 0 -15 1 3 dpI
+(S$$13:35:00.$)1 1 0 15 1 3 dpI
+14 6 2 6 1 0 3 1 dpL
+2 0 2 12 1 0 3 1 dpL
+-4 0 -4 12 1 0 3 1 dpL
+}{-4 6 -16 6 1 0 3 1 dpL
+(   )-10 -12 1 3 1 dpS%18 9
+}}def
+(S$$21:03:44){{%12 10
+(15)1 -1 5 1 1 dpP
+(RC)-6 -5 1 1 1 dpS%12 9
+}}def
+(S$$21:03:41){{%6 10
+(14)1 0 5 1 1 dpP
+(C)-3 -5 1 1 1 dpS%6 9
+}}def
+(S$$15:57:30){{%7 9
+(13)1 4 0 1 1 dpP
+(Q)-3 -4 1 1 1 dpS%6 9
+}}def
+(S$$15:57:26){{%13 9
+(4)1 7 0 1 1 dpP
+(~Q)0 -4 6 1 1 dpS%7 9
+}}def
+(S$$15:57:22){{%18 28
+(3)4 0 -14 1 1 dpP
+(CLR)-9 5 1 1 1 dpS%18 9
+0 -14 0 -5 1 0 1 1 dpL
+0 -1 4 0.0 360.0 1 0 1 1 dpC
+}}def
+(S$$15:57:14){{%8 9
+(2)2 -4 0 1 1 dpP
+(B)-2 -4 1 1 1 dpS%6 9
+}}def
+(S$$15:57:12){{%17 9
+(1)2 -8 0 1 1 dpP
+(A)3 -4 1 1 1 dpS%6 9
+-4 0 4 0.0 360.0 1 0 1 1 dpC
+}}def
+(S74LS123){{%99 90
+(S$$21:03:44)1 1 0 27 40 1 dpI
+(S$$21:03:41)1 1 0 8 40 1 dpI
+2 45 50 45 1 0 1 1 dpL
+50 -27 2 -27 1 0 1 1 dpL
+50 45 50 -27 1 0 1 1 dpL
+}{2 45 2 -27 1 0 1 1 dpL
+(S$$15:57:30)1 1 0 46 33 1 dpI
+(S$$15:57:26)1 1 0 43 -15 1 dpI
+(S$$15:57:22)1 1 0 26 -31 1 dpI
+(S$$15:57:14)1 1 0 -36 27 1 dpI
+(S$$15:57:12)1 1 0 -41 39 1 dpI
+(CLR)-38 10 1 1 1 dpS%18 9
+}{(74LS123)6 12 1 1 1 dpS%42 9
+26 -39 -46 -39 1 0 1 1 dpL
+-46 -39 -46 15 1 0 1 1 dpL
+-46 15 -40 15 1 0 1 1 dpL
+-40 9 -40 45 1 0 1 1 dpL
+-17 27 18 270.0 90.0 1 0 1 1 dpC
+}{-40 45 -17 45 1 0 1 1 dpL
+-40 9 -17 9 1 0 1 1 dpL
+}}def
+(S$$18:07:28){{%8 9
+(1)2 -4 0 3 1 dpP
+(I)-2 -4 1 3 0 dpS%6 9
+}}def
+(S$$18:07:44){{%16 9
+(O)-8 -4 1 3 0 dpS%6 9
+4 0 4 0.0 360.0 1 0 3 1 dpC
+(3)1 8 0 3 1 dpP
+}}def
+(S$$18:07:55){{%24 12
+(ResC)-12 -6 1 3 1 dpS%24 9
+(2)1 0 6 3 1 dpP
+}}def
+(SMC1489A){{%51 36
+(MC1489AL)-23 -16 1 3 1 dpS%48 9
+-25 -18 -1 -18 1 0 3 1 dpL
+-25 18 -1 18 1 0 3 1 dpL
+-1 0 18 270.0 90.0 1 0 3 1 dpC
+-25 -18 -25 18 1 0 3 1 dpL
+}{(S$$18:07:28)1 1 0 -21 0 3 dpI
+(S$$18:07:44)1 1 0 18 0 3 dpI
+(S$$18:07:55)1 1 0 -7 12 3 dpI
+}}def
+(S$$17:16:40){{%546 102
+(CMU Robotics Institute)-114 35 2 3 1 dpS%198 13
+(Page:)135 -14 1 3 1 dpS%30 9
+-264 26 -254 26 1 0 3 1 dpL
+-264 -31 -264 26 1 0 3 1 dpL
+-198 -31 -198 26 1 0 3 1 dpL
+}{-198 26 -208 26 1 0 3 1 dpL
+-208 26 -208 -21 1 0 3 1 dpL
+-254 26 -254 -21 1 0 3 1 dpL
+-212 37 -212 27 1 0 3 1 dpL
+-212 23 -212 13 1 0 3 1 dpL
+-250 37 -250 13 1 0 3 1 dpL
+}{-222 -2 -222 -18 1 0 3 1 dpL
+-226 -2 -226 -18 1 0 3 1 dpL
+-236 -2 -236 -18 1 0 3 1 dpL
+-240 -2 -240 -18 1 0 3 1 dpL
+-212 -18 -212 9 1 0 3 1 dpL
+-250 9 -250 -18 1 0 3 1 dpL
+}{-212 -18 -222 -18 1 0 3 1 dpL
+-250 -18 -240 -18 1 0 3 1 dpL
+270 33 -189 33 1 0 3 1 dpL
+270 15 -189 15 1 0 3 1 dpL
+270 -3 -189 -3 1 0 3 1 dpL
+-189 -39 -189 51 1 0 3 1 dpL
+}{270 -21 -189 -21 1 0 3 1 dpL
+126 -21 126 -3 1 0 3 1 dpL
+(Title:)-183 22 1 3 1 dpS%36 9
+126 -39 126 -21 1 0 3 1 dpL
+(Project:)-183 4 1 3 1 dpS%48 9
+(Drawing file:)-183 -32 1 3 1 dpS%78 9
+}{(Drawn by:)-183 -14 1 3 1 dpS%54 9
+(Date:)135 -32 1 3 1 dpS%30 9
+-250 37 -212 37 1 0 3 1 dpL
+-238 27 -212 27 1 0 3 1 dpL
+-238 23 -212 23 1 0 3 1 dpL
+-250 13 -212 13 1 0 3 1 dpL
+}{-212 9 -250 9 1 0 3 1 dpL
+-226 -18 -236 -18 1 0 3 1 dpL
+-264 -31 -198 -31 1 0 3 1 dpL
+-254 -21 -208 -21 1 0 3 1 dpL
+270 51 -273 51 1 0 3 1 dpL
+-238 25 2 90.0 270.0 1 0 3 1 dpC
+}{-224 -2 2 0.0 180.0 1 0 3 1 dpC
+-238 -2 2 0.0 180.0 1 0 3 1 dpC
+(of)202 -19 1 3 1 dpS%12 9
+(Pittsburgh,Pennsylvania 15213)99 -51 1 3 1 dpS%174 9
+(Carnegie-Mellon University)-273 -51 1 3 1 dpS%156 9
+-273 51 -273 -39 1 0 3 1 dpL
+}}def
+(S$$16:58:45){{%0 1041
+0 521 0 -520 1 0 3 1 dpL
+}}def
+(S$$16:58:47){{%780 0
+390 0 -390 0 1 0 3 1 dpL
+}}def
+(S$$16:58:50){{%0 1041
+0 521 0 -520 1 0 3 1 dpL
+}}def
+(S$$16:58:55){{%780 0
+390 0 -390 0 1 0 3 1 dpL
+}}def
+(S$$17:21:14){{%18 10
+(Vee)-9 -4 1 1 1 dpS%18 9
+(1)4 0 -5 1 1 dpP
+}}def
+(S$$17:21:09){{%18 10
+(Vcc)-9 -5 1 1 1 dpS%18 9
+(14)1 0 5 1 1 dpP
+}}def
+(S$$17:21:04){{%16 9
+(O)-8 -4 1 1 0 dpS%6 9
+4 0 4 0.0 360.0 1 0 1 1 dpC
+(3)1 8 0 1 1 dpP
+}}def
+(S$$17:20:55){{%8 9
+(I)-2 -4 1 1 0 dpS%6 9
+(2)2 -4 0 1 1 dpP
+}}def
+(SMC1488.SEC1){{%51 36
+(S$$17:21:14)1 1 0 -7 -13 1 dpI
+(S$$17:21:09)1 1 0 -7 13 1 dpI
+(S$$17:21:04)1 1 0 18 0 1 dpI
+(S$$17:20:55)1 1 0 -21 0 1 dpI
+-25 -18 -25 18 1 0 1 1 dpL
+}{-1 0 18 270.0 90.0 1 0 1 1 dpC
+-25 18 -1 18 1 0 1 1 dpL
+-25 -18 -1 -18 1 0 1 1 dpL
+(MC1488)-21 1 1 1 1 dpS%36 9
+}}def
+(S$$16:44:24){{%7 9
+(3)1 4 1 1 1 dpP
+(Y)-3 -4 1 1 0 dpS%6 9
+}}def
+(S$$16:44:19){{%8 9
+(2)2 -4 1 1 1 dpP
+(B)-2 -4 1 1 0 dpS%6 9
+}}def
+(S$$16:44:15){{%8 9
+(1)2 -4 0 1 1 dpP
+(A)-2 -4 1 1 0 dpS%6 9
+}}def
+(S74LS00){{%51 36
+-25 -18 -1 -18 1 0 1 1 dpL
+-25 18 -1 18 1 0 1 1 dpL
+-1 0 18 270.0 90.0 1 0 1 1 dpC
+-25 -18 -25 18 1 0 1 1 dpL
+22 0 4 0.0 360.0 1 0 1 1 dpC
+}{(S$$16:44:24)1 1 0 22 -1 1 dpI
+(S$$16:44:19)1 1 0 -21 -13 1 dpI
+(S$$16:44:15)1 1 0 -21 12 1 dpI
+(74LS00)-23 2 1 1 1 dpS%36 9
+}}def
+(S$$20:07:15){{%14 9
+(8D)-5 -4 1 1 1 dpS%12 9
+(18)2 -7 1 1 1 dpP
+}}def
+(S$$20:07:13){{%14 9
+(7D)-5 -4 1 1 1 dpS%12 9
+(17)2 -7 1 1 1 dpP
+}}def
+(S$$20:07:12){{%14 9
+(6D)-5 -4 1 1 1 dpS%12 9
+(14)2 -7 1 1 1 dpP
+}}def
+(S$$20:07:11){{%14 9
+(5D)-5 -4 1 1 1 dpS%12 9
+(13)2 -7 1 1 1 dpP
+}}def
+(S$$20:07:09){{%14 9
+(4D)-5 -4 1 1 1 dpS%12 9
+(8)2 -7 1 1 1 dpP
+}}def
+(S$$20:07:07){{%14 9
+(3D)-5 -4 1 1 1 dpS%12 9
+(7)2 -7 1 1 1 dpP
+}}def
+(S$$20:07:05){{%14 9
+(2D)-5 -4 1 1 1 dpS%12 9
+(4)2 -7 1 1 1 dpP
+}}def
+(S$$20:07:03){{%14 9
+(1D)-5 -4 1 1 1 dpS%12 9
+(3)2 -7 1 1 1 dpP
+}}def
+(S$$20:00:30){{%13 19
+(~OE)-3 1 6 1 1 dpS%13 9
+3 -5 4 0.0 360.0 1 0 1 1 dpC
+(1)4 3 -9 1 1 dpP
+}}def
+(S$$20:13:29){{%13 9
+(1Q)-6 -4 1 1 1 dpS%12 9
+(2)1 7 1 1 1 dpP
+}}def
+(S$$20:13:32){{%13 9
+(2Q)-6 -4 1 1 1 dpS%12 9
+(5)1 7 0 1 1 dpP
+}}def
+(S$$20:13:34){{%13 9
+(3Q)-6 -4 1 1 1 dpS%12 9
+(6)1 7 0 1 1 dpP
+}}def
+(S$$20:13:36){{%13 9
+(4Q)-6 -4 1 1 1 dpS%12 9
+(9)1 7 1 1 1 dpP
+}}def
+(S$$20:13:38){{%13 9
+(5Q)-6 -4 1 1 1 dpS%12 9
+(12)1 7 1 1 1 dpP
+}}def
+(S$$20:13:40){{%13 9
+(6Q)-6 -4 1 1 1 dpS%12 9
+(15)1 7 1 1 1 dpP
+}}def
+(S$$20:13:42){{%13 9
+(7Q)-6 -4 1 1 1 dpS%12 9
+(16)1 7 1 1 1 dpP
+}}def
+(S$$20:13:44){{%13 9
+(8Q)-6 -4 1 1 1 dpS%12 9
+(19)1 7 1 1 1 dpP
+}}def
+(S$$20:32:07){{%12 15
+(CK)-6 -1 1 1 1 dpS%12 9
+(11)4 -1 -7 1 1 dpP
+3 -7 -1 -1 1 0 1 1 dpL
+-1 -1 -5 -7 1 0 1 1 dpL
+-5 -7 -5 -7 1 0 1 1 dpL
+}{-5 -7 -5 -7 1 0 1 1 dpL
+}}def
+(S74LS374){{%72 129
+(S$$20:07:15)1 1 0 -29 -38 1 dpI
+(S$$20:07:13)1 1 0 -29 -26 1 dpI
+(S$$20:07:12)1 1 0 -29 -14 1 dpI
+(S$$20:07:11)1 1 0 -29 -2 1 dpI
+(S$$20:07:09)1 1 0 -29 10 1 dpI
+(S$$20:07:07)1 1 0 -29 22 1 dpI
+}{(S$$20:07:05)1 1 0 -29 34 1 dpI
+(S$$20:07:03)1 1 0 -29 46 1 dpI
+-36 -58 -36 -58 1 0 1 1 dpL
+-36 65 -36 -55 1 0 1 1 dpL
+36 65 -36 65 1 0 1 1 dpL
+36 65 36 -55 1 0 1 1 dpL
+}{-36 -55 36 -55 1 0 1 1 dpL
+-36 -58 -36 -58 1 0 1 1 dpL
+(11)1 -12 65 1 1 dpP
+(1)1 12 65 1 1 dpP
+(S$$20:00:30)1 1 0 9 -55 1 dpI
+(S$$20:13:29)1 1 0 29 46 1 dpI
+(S$$20:13:32)1 1 0 29 35 1 dpI
+}{(S$$20:13:34)1 1 0 29 23 1 dpI
+(S$$20:13:36)1 1 0 29 10 1 dpI
+(S$$20:13:38)1 1 0 29 -2 1 dpI
+(S$$20:13:40)1 1 0 29 -14 1 dpI
+(S$$20:13:42)1 1 0 29 -26 1 dpI
+(S$$20:13:44)1 1 0 29 -38 1 dpI
+(S$$20:32:07)1 1 0 -11 -48 1 dpI
+}{(74LS374)-21 55 1 1 1 dpS%42 9
+}}def
+(S$$18:20:55){{%8 9
+(Y)-4 -4 1 3 0 dpS%6 9
+(3)1 4 1 3 1 dpP
+}}def
+(S$$15:41:03){{%7 9
+(A)-2 -4 1 3 0 dpS%6 9
+(1)2 -3 0 3 1 dpP
+}}def
+(S$$15:41:25){{%7 9
+(B)-2 -4 1 3 0 dpS%6 9
+(2)2 -3 1 3 1 dpP
+}}def
+(S74LS32){{%53 37
+(74LS32)-19 4 1 3 1 dpS%36 9
+(S$$18:20:55)1 1 0 23 -1 3 dpI
+-49 0 30 322.7 38.7 1 0 3 1 dpC
+-5 18 36 270.0 329.0 1 0 3 1 dpC
+-5 -18 36 32.7 90.0 1 0 3 1 dpC
+}{-5 18 -25 18 1 0 3 1 dpL
+(S$$15:41:03)1 1 0 -18 12 3 dpI
+-5 -18 -25 -18 1 0 3 1 dpL
+(S$$15:41:25)1 1 0 -18 -13 3 dpI
+}}def
+(SRESISTOR){{%41 15
+(      )-18 -7 1 3 1 dpS%36 9
+2 2 -2 8 1 0 3 1 dpL
+18 5 12 5 1 0 3 1 dpL
+-10 8 -12 5 1 0 3 1 dpL
+-10 8 -6 2 1 0 3 1 dpL
+}{10 2 6 8 1 0 3 1 dpL
+2 2 6 8 1 0 3 1 dpL
+-2 8 -6 2 1 0 3 1 dpL
+10 2 12 5 1 0 3 1 dpL
+(2)1 18 5 3 1 dpP
+(1)2 -18 5 3 1 dpP
+}{-12 5 -18 5 1 0 3 1 dpL
+(B)15 -5 1 3 0 dpS%6 9
+(A)-20 -5 1 3 0 dpS%6 9
+}}def
+(S$$19:57:54){{%42 10
+(Cathode)-21 -5 1 3 0 dpS%42 9
+(2)1 -4 5 3 1 dpP
+}}def
+(S$$19:57:38){{%30 10
+(Anode)-15 -4 1 3 0 dpS%30 9
+(1)2 -1 -5 3 1 dpP
+}}def
+(SLED){{%69 34
+(S$$19:57:54)1 1 0 14 -9 3 dpI
+(S$$19:57:38)1 1 0 -19 1 3 dpI
+-5 -4 13 0.0 360.0 1 0 3 1 dpC
+-12 -13 2 -4 3 0 3 1 dpL
+-12 5 2 -4 3 0 3 1 dpL
+}{2 -13 2 5 2 0 3 1 dpL
+-12 -13 -12 5 3 0 3 1 dpL
+10 -4 2 -4 1 0 3 1 dpL
+-12 -4 -20 -4 1 0 3 1 dpL
+7 9 13 15 2 0 3 1 dpL
+10 14 14 16 2 0 3 1 dpL
+}{12 12 14 16 2 0 3 1 dpL
+12 12 10 14 2 0 3 1 dpL
+-11 4 -11 -12 3 0 3 1 dpL
+-10 3 -10 -11 3 0 3 1 dpL
+-9 -11 -9 3 3 0 3 1 dpL
+-8 2 -8 -10 3 0 3 1 dpL
+}{-7 1 -7 -9 3 0 3 1 dpL
+-6 1 -6 -9 3 0 3 1 dpL
+-5 0 -5 -8 3 0 3 1 dpL
+-4 0 -4 -8 3 0 3 1 dpL
+-3 -1 -3 -7 3 0 3 1 dpL
+-1 -2 -1 -6 3 0 3 1 dpL
+}{-2 -2 -2 -6 3 0 3 1 dpL
+0 -3 0 -5 3 0 3 1 dpL
+0 -4 0 -4 3 0 3 1 dpL
+2 -4 0 -4 3 0 3 1 dpL
+0 10 6 16 2 0 3 1 dpL
+3 15 7 17 2 0 3 1 dpL
+}{5 13 7 17 2 0 3 1 dpL
+5 13 3 15 2 0 3 1 dpL
+}}def
+(S$$08:02:22){{%16 9
+(~OE)-5 -4 6 3 1 dpS%13 9
+(22)2 -8 1 3 1 dpP
+}}def
+(S$$08:02:26){{%22 9
+(20)2 -11 1 3 1 dpP
+(~CE1)-8 -4 6 3 1 dpS%19 9
+}}def
+(S$$08:02:29){{%22 9
+(26)2 -11 1 3 1 dpP
+(CE2)-7 -4 1 3 1 dpS%18 9
+}}def
+(S$$08:02:31){{%16 9
+(27)2 -8 1 3 1 dpP
+(~WT)-5 -4 6 3 1 dpS%13 9
+}}def
+(S$$08:02:33){{%16 9
+(1)2 -8 1 3 1 dpP
+(NC)-4 -4 1 3 1 dpS%12 9
+}}def
+(S$$08:00:57){{%12 11
+(D0)-6 -5 1 3 1 dpS%12 9
+(11)1 -1 6 3 1 dpP
+}}def
+(S$$08:00:33){{%22 9
+(2)2 -11 1 3 1 dpP
+(A12)-7 -4 1 3 1 dpS%18 9
+}}def
+(S$$08:00:31){{%22 9
+(23)2 -11 1 3 1 dpP
+(A11)-7 -4 1 3 1 dpS%18 9
+}}def
+(S$$08:00:28){{%22 9
+(21)2 -11 1 3 1 dpP
+(A10)-7 -4 1 3 1 dpS%18 9
+}}def
+(S$$08:00:21){{%16 9
+(24)2 -8 1 3 1 dpP
+(A9)-4 -4 1 3 1 dpS%12 9
+}}def
+(S$$08:00:18){{%16 9
+(25)2 -8 1 3 1 dpP
+(A8)-4 -4 1 3 1 dpS%12 9
+}}def
+(S$$08:00:16){{%16 9
+(3)2 -8 1 3 1 dpP
+(A7)-4 -4 1 3 1 dpS%12 9
+}}def
+(S$$08:00:13){{%16 9
+(4)2 -8 1 3 1 dpP
+(A6)-4 -4 1 3 1 dpS%12 9
+}}def
+(S$$08:00:11){{%16 9
+(5)2 -8 1 3 1 dpP
+(A5)-4 -4 1 3 1 dpS%12 9
+}}def
+(S$$08:00:06){{%16 9
+(6)2 -8 1 3 1 dpP
+(A4)-4 -4 1 3 1 dpS%12 9
+}}def
+(S$$08:00:03){{%16 9
+(7)2 -8 1 3 1 dpP
+(A3)-4 -4 1 3 1 dpS%12 9
+}}def
+(S$$08:00:00){{%16 9
+(8)2 -8 1 3 1 dpP
+(A2)-4 -4 1 3 1 dpS%12 9
+}}def
+(S$$07:59:58){{%16 9
+(9)2 -8 1 3 1 dpP
+(A1)-4 -4 1 3 1 dpS%12 9
+}}def
+(S$$07:59:54){{%16 9
+(10)2 -8 1 3 1 dpP
+(A0)-4 -4 1 3 1 dpS%12 9
+}}def
+(S$$08:01:29){{%12 11
+(D7)-6 -5 1 3 1 dpS%12 9
+(19)1 -1 6 3 1 dpP
+}}def
+(S$$08:01:28){{%12 11
+(D6)-6 -5 1 3 1 dpS%12 9
+(18)1 -1 6 3 1 dpP
+}}def
+(S$$08:01:21){{%12 11
+(D5)-6 -5 1 3 1 dpS%12 9
+(17)1 -1 6 3 1 dpP
+}}def
+(S$$08:01:19){{%12 11
+(D4)-6 -5 1 3 1 dpS%12 9
+(16)1 -1 6 3 1 dpP
+}}def
+(S$$08:01:17){{%12 11
+(D3)-6 -5 1 3 1 dpS%12 9
+(15)1 -1 6 3 1 dpP
+}}def
+(S$$08:01:01){{%12 11
+(D2)-6 -5 1 3 1 dpS%12 9
+(13)1 -1 6 3 1 dpP
+}}def
+(S$$08:00:59){{%12 11
+(D1)-6 -5 1 3 1 dpS%12 9
+(12)1 -1 6 3 1 dpP
+}}def
+(S6264){{%162 240
+(1)1 81 -60 3 1 dpP
+(26)1 81 -84 3 1 dpP
+-81 -120 -81 120 1 0 3 1 dpL
+81 120 -81 120 1 0 3 1 dpL
+81 -120 81 120 1 0 3 1 dpL
+}{(8Kx8)-21 30 1 3 1 dpS%24 9
+(8)1 81 78 3 1 dpP
+(7)1 81 66 3 1 dpP
+(6)1 81 54 3 1 dpP
+(5)1 81 42 3 1 dpP
+(4)1 81 30 3 1 dpP
+(3)1 81 18 3 1 dpP
+(9)1 81 90 3 1 dpP
+}{(10)1 81 102 3 1 dpP
+(25)1 81 6 3 1 dpP
+(24)1 81 -6 3 1 dpP
+(21)1 81 -18 3 1 dpP
+(23)1 81 -30 3 1 dpP
+(2)1 81 -42 3 1 dpP
+81 -120 -81 -120 1 0 3 1 dpL
+}{(11)4 -63 -120 3 1 dpP
+(12)4 -45 -120 3 1 dpP
+(13)4 -27 -120 3 1 dpP
+(15)4 -9 -120 3 1 dpP
+(16)4 9 -120 3 1 dpP
+(17)4 27 -120 3 1 dpP
+(18)4 45 -120 3 1 dpP
+(19)4 63 -120 3 1 dpP
+}{(20)1 81 -96 3 1 dpP
+(22)1 81 -108 3 1 dpP
+(27)1 81 -72 3 1 dpP
+(RAM)-18 18 1 3 1 dpS%18 9
+(S$$08:02:22)1 1 0 -73 -109 3 dpI
+(S$$08:02:26)1 1 0 -70 -97 3 dpI
+(S$$08:02:29)1 1 0 -70 -85 3 dpI
+}{(S$$08:02:31)1 1 0 -73 -73 3 dpI
+(S$$08:02:33)1 1 0 -73 -61 3 dpI
+(S$$08:00:57)1 1 0 -62 114 3 dpI
+(S$$08:00:33)1 1 0 -70 -43 3 dpI
+(S$$08:00:31)1 1 0 -70 -31 3 dpI
+(S$$08:00:28)1 1 0 -70 -19 3 dpI
+(S$$08:00:21)1 1 0 -73 -7 3 dpI
+}{(S$$08:00:18)1 1 0 -73 5 3 dpI
+(S$$08:00:16)1 1 0 -73 17 3 dpI
+(S$$08:00:13)1 1 0 -73 29 3 dpI
+(S$$08:00:11)1 1 0 -73 41 3 dpI
+(S$$08:00:06)1 1 0 -73 53 3 dpI
+(S$$08:00:03)1 1 0 -73 65 3 dpI
+(S$$08:00:00)1 1 0 -73 77 3 dpI
+}{(S$$07:59:58)1 1 0 -73 89 3 dpI
+(S$$07:59:54)1 1 0 -73 101 3 dpI
+(S$$08:01:29)1 1 0 64 114 3 dpI
+(S$$08:01:28)1 1 0 46 114 3 dpI
+(S$$08:01:21)1 1 0 28 114 3 dpI
+(S$$08:01:19)1 1 0 10 114 3 dpI
+(S$$08:01:17)1 1 0 -8 114 3 dpI
+}{(S$$08:01:01)1 1 0 -26 114 3 dpI
+(S$$08:00:59)1 1 0 -44 114 3 dpI
+(6264)-27 51 2 3 1 dpS%36 13
+}}def
+(SEDGE.OH){{%42 12
+(1)4 -21 0 3 0 dpP
+-15 0 -21 0 1 0 3 1 dpL
+-9 -6 -15 0 1 0 3 1 dpL
+-9 6 -15 0 1 0 3 1 dpL
+-9 -6 21 -6 1 0 3 1 dpL
+}{21 6 21 -6 1 0 3 1 dpL
+}}def
+(SEDGE.O){{%42 12
+(1)2 -21 0 3 0 dpP
+-15 0 -21 0 1 0 3 1 dpL
+-9 -6 -15 0 1 0 3 1 dpL
+-9 6 -15 0 1 0 3 1 dpL
+21 -6 -9 -6 1 0 3 1 dpL
+}{21 6 -9 6 1 0 3 1 dpL
+21 -6 21 6 1 0 3 1 dpL
+}}def
+(S$$17:44:26){{%16 9
+(0)-8 -4 1 3 1 dpS%6 9
+(15)1 8 1 3 1 dpP
+4 1 4 0.0 360.0 1 0 3 1 dpC
+}}def
+(S$$17:44:38){{%16 9
+(1)-8 -4 1 3 1 dpS%6 9
+(14)1 8 1 3 1 dpP
+4 1 4 0.0 360.0 1 0 3 1 dpC
+}}def
+(S$$17:44:48){{%16 9
+(2)-8 -4 1 3 1 dpS%6 9
+(13)1 8 1 3 1 dpP
+4 1 4 0.0 360.0 1 0 3 1 dpC
+}}def
+(S$$17:44:56){{%16 9
+(3)-8 -4 1 3 1 dpS%6 9
+(12)1 8 1 3 1 dpP
+4 1 4 0.0 360.0 1 0 3 1 dpC
+}}def
+(S$$17:45:05){{%16 9
+(4)-8 -4 1 3 1 dpS%6 9
+(11)1 8 1 3 1 dpP
+4 1 4 0.0 360.0 1 0 3 1 dpC
+}}def
+(S$$17:45:16){{%16 9
+(5)-8 -4 1 3 1 dpS%6 9
+(10)1 8 1 3 1 dpP
+4 1 4 0.0 360.0 1 0 3 1 dpC
+}}def
+(S$$17:45:26){{%16 9
+(6)-8 -4 1 3 1 dpS%6 9
+(9)1 8 1 3 1 dpP
+4 1 4 0.0 360.0 1 0 3 1 dpC
+}}def
+(S$$17:45:35){{%16 9
+(7)-8 -4 1 3 1 dpS%6 9
+(7)1 8 1 3 1 dpP
+4 1 4 0.0 360.0 1 0 3 1 dpC
+}}def
+(S$$17:46:22){{%8 9
+(A)-2 -4 1 3 1 dpS%6 9
+(1)2 -4 1 3 1 dpP
+}}def
+(S$$17:46:35){{%8 9
+(C)-2 -4 1 3 1 dpS%6 9
+(3)2 -4 1 3 1 dpP
+}}def
+(S$$16:42:55){{%8 9
+(B)-2 -4 1 3 1 dpS%6 9
+(2)2 -4 1 3 1 dpP
+}}def
+(S$$17:43:44){{%15 9
+(G1)-4 -4 1 3 1 dpS%12 9
+(6)2 -7 1 3 1 dpP
+}}def
+(S$$17:43:56){{%31 9
+(G2A)-2 -4 1 3 1 dpS%18 9
+(4)2 -15 1 3 1 dpP
+-11 1 4 0.0 360.0 1 0 3 1 dpC
+}}def
+(S$$17:44:06){{%33 10
+(G2B)-3 -4 1 3 1 dpS%18 9
+(5)2 -16 1 3 1 dpP
+-12 1 4 0.0 360.0 1 0 3 1 dpC
+-7 -5 17 -5 1 0 3 1 dpL
+}}def
+(S$$16:43:11){{%63 36
+(G)26 -3 1 3 1 dpS%6 9
+-22 18 2 18 1 0 3 1 dpL
+2 0 18 270.0 90.0 1 0 3 1 dpC
+-22 -18 -22 18 1 0 3 1 dpL
+(S$$17:43:44)1 1 0 -15 11 3 dpI
+}{(S$$17:43:56)1 1 0 -16 -1 3 dpI
+(S$$17:44:06)1 1 0 -15 -13 3 dpI
+}}def
+(S74LS138){{%117 108
+50 54 -4 54 1 0 3 1 dpL
+50 -54 -4 -54 1 0 3 1 dpL
+50 -54 50 54 1 0 3 1 dpL
+-4 54 -4 -54 1 0 3 1 dpL
+(74LS138)-2 25 1 3 1 dpS%42 9
+}{(S$$17:44:26)1 1 0 51 41 3 dpI
+(S$$17:44:38)1 1 0 51 29 3 dpI
+(S$$17:44:48)1 1 0 51 17 3 dpI
+(S$$17:44:56)1 1 0 51 5 3 dpI
+(S$$17:45:05)1 1 0 51 -7 3 dpI
+(S$$17:45:16)1 1 0 51 -19 3 dpI
+(S$$17:45:26)1 1 0 51 -31 3 dpI
+}{(S$$17:45:35)1 1 0 51 -43 3 dpI
+(S$$17:46:22)1 1 0 0 41 3 dpI
+(S$$17:46:35)1 1 0 0 -7 3 dpI
+(S$$16:42:55)1 1 0 0 17 3 dpI
+(S$$16:43:11)1 1 0 -27 -36 3 dpI
+}}def
+(S$$01:00:25){{%24 13
+(FIRQ)-12 -2 6 3 1 dpS%24 9
+(4)4 0 -6 3 1 dpP
+}}def
+(S$$01:00:23){{%19 13
+(~NMI)-9 -2 6 3 1 dpS%19 9
+(2)4 1 -6 3 1 dpP
+}}def
+(S$$01:00:19){{%19 13
+(~IRQ)-9 -2 6 3 1 dpS%19 9
+(3)4 1 -6 3 1 dpP
+}}def
+(S$$01:22:58){{%30 9
+(EXTAL)-15 -4 1 3 1 dpS%30 9
+}}def
+(S$$01:23:27){{%30 12
+(S$$01:22:58)1 1 0 0 -2 3 dpI
+(38)1 0 6 3 1 dpP
+}}def
+(S$$01:23:26){{%24 12
+(39)1 -3 6 3 1 dpP
+(XTAL)-12 -6 1 3 1 dpS%24 9
+}}def
+(S6809D){{%16 93
+(D6)-3 -34 1 3 1 dpS%12 9
+(D7)-3 -46 1 3 1 dpS%12 9
+(D5)-3 -22 1 3 1 dpS%12 9
+(D4)-3 -10 1 3 1 dpS%12 9
+(D3)-3 2 1 3 1 dpS%12 9
+}{(D2)-3 14 1 3 1 dpS%12 9
+(D1)-3 26 1 3 1 dpS%12 9
+(D0)-3 38 1 3 1 dpS%12 9
+(31)2 -9 43 3 1 dpP
+(30)2 -9 31 3 1 dpP
+(29)2 -9 19 3 1 dpP
+(28)2 -9 7 3 1 dpP
+}{(27)2 -9 -5 3 1 dpP
+(26)2 -9 -17 3 1 dpP
+(25)2 -9 -29 3 1 dpP
+(24)2 -9 -41 3 1 dpP
+}}def
+(S6809AD){{%22 297
+(31)1 11 -59 3 1 dpP
+(30)1 11 -71 3 1 dpP
+(29)1 11 -83 3 1 dpP
+(28)1 11 -95 3 1 dpP
+(27)1 11 -107 3 1 dpP
+(26)1 11 -119 3 1 dpP
+(25)1 11 -131 3 1 dpP
+}{(24)1 11 -143 3 1 dpP
+(D6)-5 -136 1 3 1 dpS%12 9
+(D7)-5 -148 1 3 1 dpS%12 9
+(D5)-5 -124 1 3 1 dpS%12 9
+(D4)-5 -112 1 3 1 dpS%12 9
+(D3)-5 -100 1 3 1 dpS%12 9
+}{(D2)-5 -88 1 3 1 dpS%12 9
+(D1)-5 -76 1 3 1 dpS%12 9
+(D0)-5 -64 1 3 1 dpS%12 9
+(23)1 11 -35 3 1 dpP
+(22)1 11 -23 3 1 dpP
+(21)1 11 -11 3 1 dpP
+(20)1 11 1 3 1 dpP
+}{(19)1 11 13 3 1 dpP
+(18)1 11 25 3 1 dpP
+(17)1 11 37 3 1 dpP
+(16)1 11 49 3 1 dpP
+(15)1 11 61 3 1 dpP
+(14)1 11 73 3 1 dpP
+(13)1 11 85 3 1 dpP
+(12)1 11 97 3 1 dpP
+}{(11)1 11 109 3 1 dpP
+(10)1 11 121 3 1 dpP
+(9)1 11 133 3 1 dpP
+(8)1 11 145 3 1 dpP
+(A2)-5 116 1 3 1 dpS%12 9
+(A7)-5 56 1 3 1 dpS%12 9
+(A6)-5 68 1 3 1 dpS%12 9
+}{(A5)-5 80 1 3 1 dpS%12 9
+(A4)-5 92 1 3 1 dpS%12 9
+(A3)-5 104 1 3 1 dpS%12 9
+(A1)-5 128 1 3 1 dpS%12 9
+(A0)-5 140 1 3 1 dpS%12 9
+(A15)-11 -40 1 3 1 dpS%18 9
+}{(A14)-11 -28 1 3 1 dpS%18 9
+(A13)-11 -16 1 3 1 dpS%18 9
+(A12)-11 -4 1 3 1 dpS%18 9
+(A11)-11 8 1 3 1 dpS%18 9
+(A10)-11 20 1 3 1 dpS%18 9
+(A9)-5 32 1 3 1 dpS%12 9
+}{(A8)-5 44 1 3 1 dpS%12 9
+}}def
+(S6809A){{%22 189
+(23)2 -12 -89 3 1 dpP
+(22)2 -12 -77 3 1 dpP
+(21)2 -12 -65 3 1 dpP
+(20)2 -12 -53 3 1 dpP
+(19)2 -12 -41 3 1 dpP
+(18)2 -12 -29 3 1 dpP
+(17)2 -12 -17 3 1 dpP
+}{(16)2 -12 -5 3 1 dpP
+(15)2 -12 7 3 1 dpP
+(14)2 -12 19 3 1 dpP
+(13)2 -12 31 3 1 dpP
+(12)2 -12 43 3 1 dpP
+(11)2 -12 55 3 1 dpP
+(10)2 -12 67 3 1 dpP
+(9)2 -12 79 3 1 dpP
+}{(8)2 -12 91 3 1 dpP
+(A15)-6 -94 1 3 1 dpS%18 9
+(A14)-6 -82 1 3 1 dpS%18 9
+(A13)-6 -70 1 3 1 dpS%18 9
+(A12)-6 -58 1 3 1 dpS%18 9
+(A11)-6 -46 1 3 1 dpS%18 9
+}{(A10)-6 -34 1 3 1 dpS%18 9
+(A1)-6 74 1 3 1 dpS%12 9
+(A0)-6 86 1 3 1 dpS%12 9
+(A9)-6 -22 1 3 1 dpS%12 9
+(A2)-6 62 1 3 1 dpS%12 9
+(A7)-6 2 1 3 1 dpS%12 9
+}{(A6)-6 14 1 3 1 dpS%12 9
+(A5)-6 26 1 3 1 dpS%12 9
+(A4)-6 38 1 3 1 dpS%12 9
+(A3)-6 50 1 3 1 dpS%12 9
+(A8)-6 -10 1 3 1 dpS%12 9
+}}def
+(S6809MEMCON){{%28 45
+(E)4 2 1 3 1 dpS%6 9
+(36)1 14 -17 3 1 dpP
+(MRDY)-14 -22 1 3 1 dpS%24 9
+(Q)4 -10 1 3 1 dpS%6 9
+(35)1 14 -5 3 1 dpP
+(34)1 14 7 3 1 dpP
+}{(32)1 14 19 3 1 dpP
+(WR)-2 14 6 3 1 dpS%12 9
+}}def
+(A12)147 -321 1 3 1 dpS%18 9
+(A11)147 -309 1 3 1 dpS%18 9
+(A10)147 -297 1 3 1 dpS%18 9
+(A9)147 -285 1 3 1 dpS%12 9
+(A8)147 -273 1 3 1 dpS%12 9
+(A7)147 -261 1 3 1 dpS%12 9
+(A6)147 -249 1 3 1 dpS%12 9
+(A5)147 -237 1 3 1 dpS%12 9
+(A4)147 -225 1 3 1 dpS%12 9
+(A3)147 -213 1 3 1 dpS%12 9
+(A2)147 -201 1 3 1 dpS%12 9
+(A1)147 -189 1 3 1 dpS%12 9
+(A0)147 -177 1 3 1 dpS%12 9
+(+5V)120 -336 1 3 1 dpS%18 9
+156 -336 156 -360 1 0 3 1 dpL
+204 -336 132 -336 1 0 3 1 dpL
+204 -348 156 -348 1 0 3 1 dpL
+204 -360 156 -360 1 0 3 1 dpL
+204 -318 186 -318 1 0 3 1 dpL
+204 -306 186 -306 1 0 3 1 dpL
+204 -294 186 -294 1 0 3 1 dpL
+204 -282 186 -282 1 0 3 1 dpL
+204 -270 186 -270 1 0 3 1 dpL
+204 -258 186 -258 1 0 3 1 dpL
+204 -246 186 -246 1 0 3 1 dpL
+204 -234 186 -234 1 0 3 1 dpL
+204 -222 186 -222 1 0 3 1 dpL
+204 -210 186 -210 1 0 3 1 dpL
+204 -198 186 -198 1 0 3 1 dpL
+204 -186 186 -186 1 0 3 1 dpL
+204 -174 186 -174 1 0 3 1 dpL
+(SEDGE.IH)1 1 0 165 -306 3 dpI
+(SEDGE.IH)1 1 0 165 -294 3 dpI
+(SEDGE.IH)1 1 0 165 -282 3 dpI
+(SEDGE.IH)1 1 0 165 -270 3 dpI
+(SEDGE.IH)1 1 0 165 -318 3 dpI
+(SEDGE.IH)1 1 0 165 -258 3 dpI
+(SEDGE.IH)1 1 0 -333 -390 3 dpI
+(SEDGE.IH)1 1 0 165 -234 3 dpI
+(SEDGE.IH)1 1 0 165 -222 3 dpI
+(SEDGE.IH)1 1 0 165 -210 3 dpI
+(SEDGE.IH)1 1 0 165 -198 3 dpI
+(SEDGE.I)1 1 0 -333 -306 3 dpI
+(S2764)1 1 0 285 -276 3 dpI
+12 78 168 78 1 0 3 1 dpL
+168 78 168 246 1 0 3 1 dpL
+204 246 168 246 1 0 3 1 dpL
+204 258 162 258 1 0 3 1 dpL
+162 90 162 258 1 0 3 1 dpL
+12 90 162 90 1 0 3 1 dpL
+204 270 156 270 1 0 3 1 dpL
+156 102 156 270 1 0 3 1 dpL
+12 102 156 102 1 0 3 1 dpL
+204 282 150 282 1 0 3 1 dpL
+150 114 150 282 1 0 3 1 dpL
+12 114 150 114 1 0 3 1 dpL
+204 294 144 294 1 0 3 1 dpL
+144 126 144 294 1 0 3 1 dpL
+12 126 144 126 1 0 3 1 dpL
+204 306 138 306 1 0 3 1 dpL
+138 138 138 306 1 0 3 1 dpL
+204 318 132 318 1 0 3 1 dpL
+132 150 132 318 1 0 3 1 dpL
+204 330 126 330 1 0 3 1 dpL
+126 162 126 330 1 0 3 1 dpL
+204 342 120 342 1 0 3 1 dpL
+120 174 120 342 1 0 3 1 dpL
+204 354 114 354 1 0 3 1 dpL
+114 186 114 354 1 0 3 1 dpL
+204 366 108 366 1 0 3 1 dpL
+108 198 108 366 1 0 3 1 dpL
+102 210 102 378 1 0 3 1 dpL
+204 378 102 378 1 0 3 1 dpL
+204 390 96 390 1 0 3 1 dpL
+96 222 96 390 1 0 3 1 dpL
+12 138 138 138 1 0 3 1 dpL
+12 150 132 150 1 0 3 1 dpL
+12 162 126 162 1 0 3 1 dpL
+12 174 120 174 1 0 3 1 dpL
+12 186 114 186 1 0 3 1 dpL
+12 198 108 198 1 0 3 1 dpL
+12 210 102 210 1 0 3 1 dpL
+12 222 96 222 1 0 3 1 dpL
+90 -72 90 -210 1 0 3 1 dpL
+(SGND)1 1 0 -257 -447 3 dpI
+12 18 30 18 1 0 3 1 dpL
+12 6 30 6 1 0 3 1 dpL
+12 -6 30 -6 1 0 3 1 dpL
+12 -18 30 -18 1 0 3 1 dpL
+12 -30 30 -30 1 0 3 1 dpL
+12 -42 30 -42 1 0 3 1 dpL
+12 -54 30 -54 1 0 3 1 dpL
+12 -66 30 -66 1 0 3 1 dpL
+-324 168 -366 168 1 0 3 1 dpL
+-366 -210 -366 168 1 0 3 1 dpL
+90 -210 -366 -210 1 0 3 1 dpL
+(SSIPCOM)1 1 0 -344 -88 3 dpI
+-324 150 -384 150 1 0 3 1 dpL
+-384 150 -384 -198 1 0 3 1 dpL
+-384 -198 78 -198 1 0 3 1 dpL
+78 -90 78 -198 1 0 3 1 dpL
+12 -90 78 -90 1 0 3 1 dpL
+-324 138 -378 138 1 0 3 1 dpL
+-378 138 -378 -192 1 0 3 1 dpL
+-378 -192 72 -192 1 0 3 1 dpL
+72 -102 72 -192 1 0 3 1 dpL
+12 -102 72 -102 1 0 3 1 dpL
+-282 504 -276 510 1 0 3 1 dpL
+-270 504 -276 510 1 0 3 1 dpL
+(RS-232)-282 513 1 3 1 dpS%36 9
+-258 510 -252 504 1 0 3 1 dpL
+-246 510 -252 504 1 0 3 1 dpL
+-30 372 48 372 1 0 3 1 dpL
+-30 372 -30 444 1 0 3 1 dpL
+-30 444 -18 444 1 0 3 1 dpL
+(SGND)1 1 0 -41 428 3 dpI
+-48 426 -48 438 1 0 3 1 dpL
+-48 438 -90 438 1 0 3 1 dpL
+-90 438 -90 414 1 0 3 1 dpL
+-90 414 -108 414 1 0 3 1 dpL
+-78 456 -78 510 1 0 3 1 dpL
+-27 456 -78 456 1 0 3 1 dpL
+-78 510 -216 510 1 0 3 1 dpL
+-216 510 -216 450 1 0 3 1 dpL
+-216 450 -186 450 1 0 3 1 dpL
+-207 423 -216 414 1 0 3 1 dpL
+-216 432 -207 441 1 0 3 1 dpL
+-207 405 -216 396 1 0 3 1 dpL
+-207 387 -216 378 1 0 3 1 dpL
+-204 378 -186 378 1 0 3 1 dpL
+-204 396 -186 396 1 0 3 1 dpL
+-186 414 -204 414 1 0 3 1 dpL
+-186 432 -204 432 1 0 3 1 dpL
+-216 333 -216 432 1 0 3 1 dpL
+-216 333 -150 333 1 0 3 1 dpL
+(2.5479 MHz)-90 363 1 3 1 dpS%60 9
+-60 378 -60 393 1 0 3 1 dpL
+-60 378 -108 378 1 0 3 1 dpL
+-84 396 -108 396 1 0 3 1 dpL
+(SXTAL)1 1 0 -72 395 3 dpI
+72 450 84 450 1 0 3 1 dpL
+(2.2K)-46 488 1 3 1 dpS%24 9
+(SCAPACITOR)1 1 0 64 504 3 dpI
+30 462 30 510 1 0 3 1 dpL
+30 510 49 510 1 0 3 1 dpL
+48 462 48 489 1 0 3 1 dpL
+48 489 79 489 1 0 3 1 dpL
+78 510 78 489 1 0 3 1 dpL
+(0.01uF)87 494 1 3 1 dpS%36 9
+(SSIPCOM)1 1 0 -44 500 3 dpI
+(S74LS123)1 1 0 22 417 3 dpI
+(SXTAL)1 1 0 -45 272 3 dpI
+(SMC1489A)1 1 0 -281 366 3 dpI
+(S$$17:16:40)1 1 0 119 -475 1 dpI
+(S$$16:58:45)1 1 0 -391 6 1 dpI
+(S$$16:58:47)1 1 0 -1 527 1 dpI
+(S$$16:58:50)1 1 0 389 6 1 dpI
+(S$$16:58:55)1 1 0 -1 -514 1 dpI
+-63 240 -63 273 1 0 3 1 dpL
+-63 273 -57 273 1 0 3 1 dpL
+-102 -66 -186 -66 1 0 3 1 dpL
+-186 -66 -186 96 1 0 3 1 dpL
+-102 -54 -204 -54 1 0 3 1 dpL
+-204 -54 -204 96 1 0 3 1 dpL
+-222 -42 -222 96 1 0 3 1 dpL
+-102 -42 -222 -42 1 0 3 1 dpL
+-102 -30 -240 -30 1 0 3 1 dpL
+-240 -30 -240 96 1 0 3 1 dpL
+-258 -18 -258 96 1 0 3 1 dpL
+-102 -18 -258 -18 1 0 3 1 dpL
+-102 -6 -276 -6 1 0 3 1 dpL
+-276 -6 -276 96 1 0 3 1 dpL
+-294 6 -294 96 1 0 3 1 dpL
+-102 6 -294 6 1 0 3 1 dpL
+-102 18 -312 18 1 0 3 1 dpL
+-312 18 -312 96 1 0 3 1 dpL
+-342 216 -324 216 1 0 3 1 dpL
+-342 297 -342 216 1 0 3 1 dpL
+42 297 -342 297 1 0 3 1 dpL
+-138 144 -138 121 1 0 3 1 dpL
+-174 144 -138 144 1 0 3 1 dpL
+-138 132 -174 132 1 0 3 1 dpL
+-378 180 -324 180 1 0 3 1 dpL
+-378 192 -324 192 1 0 3 1 dpL
+-378 192 -378 180 1 0 3 1 dpL
+-378 201 -378 192 1 0 3 1 dpL
+-150 204 -174 204 1 0 3 1 dpL
+-150 216 -174 216 1 0 3 1 dpL
+-150 333 -150 204 1 0 3 1 dpL
+(8.0MHz)-27 285 1 3 1 dpS%36 9
+-102 -114 -264 -114 1 0 3 1 dpL
+-102 -126 -294 -126 1 0 3 1 dpL
+-102 -138 -324 -138 1 0 3 1 dpL
+(SSIPCOM)1 1 0 -314 -88 3 dpI
+(SSIPCOM)1 1 0 52 -136 3 dpI
+(SSIPCOM)1 1 0 -284 -88 3 dpI
+-294 -126 -294 -114 1 0 3 1 dpL
+-324 -138 -324 -114 1 0 3 1 dpL
+-72 -204 84 -204 1 0 3 1 dpL
+-72 -165 -72 -204 1 0 3 1 dpL
+-372 114 -324 114 1 0 3 1 dpL
+-372 -186 -372 114 1 0 3 1 dpL
+-15 -186 -372 -186 1 0 3 1 dpL
+-15 -165 -15 -186 1 0 3 1 dpL
+(SMC1488.SEC1)1 1 0 -329 462 3 dpI
+-141 180 -174 180 1 0 3 1 dpL
+-141 309 -141 180 1 0 3 1 dpL
+-141 309 -372 309 1 0 3 1 dpL
+-372 309 -372 462 1 0 3 1 dpL
+-354 462 -372 462 1 0 3 1 dpL
+-276 462 -303 462 1 0 3 1 dpL
+-276 510 -276 462 1 0 3 1 dpL
+-132 168 -174 168 1 0 3 1 dpL
+-132 321 -132 168 1 0 3 1 dpL
+-132 321 -240 321 1 0 3 1 dpL
+-240 321 -240 366 1 0 3 1 dpL
+-255 366 -240 366 1 0 3 1 dpL
+-306 366 -324 366 1 0 3 1 dpL
+-324 411 -324 366 1 0 3 1 dpL
+-252 411 -324 411 1 0 3 1 dpL
+-252 411 -252 504 1 0 3 1 dpL
+(6809 single board computer)-24 -456 1 3 1 dpS%156 9
+("Freeware" 6809)-9 -471 1 3 1 dpS%90 9
+(Russell Hoffman  rh2y+@andrew.cmu.edu)-6 -489 1 3 1 dpS%222 9
+(1)303 -489 1 3 1 dpS%6 9
+(1)357 -489 1 3 1 dpS%6 9
+(9/12/92)297 -507 1 3 1 dpS%42 9
+(S74LS00)1 1 0 -140 -276 3 dpI
+(S74LS00)1 1 0 -41 -264 3 dpI
+-15 -324 12 -324 1 0 3 1 dpL
+12 -384 12 -324 1 0 3 1 dpL
+204 -384 12 -384 1 0 3 1 dpL
+96 -372 96 -78 1 0 3 1 dpL
+204 -372 96 -372 1 0 3 1 dpL
+180 192 180 60 1 0 3 1 dpL
+204 192 180 192 1 0 3 1 dpL
+-66 -276 -111 -276 1 0 3 1 dpL
+-186 -288 -162 -288 1 0 3 1 dpL
+-186 -264 -162 -264 1 0 3 1 dpL
+-186 -198 -186 -288 1 0 3 1 dpL
+84 450 84 -204 1 0 3 1 dpL
+-24 273 -33 273 1 0 3 1 dpL
+-24 240 -24 273 1 0 3 1 dpL
+(S74LS374)1 1 0 -276 -353 3 dpI
+(SGND)1 1 0 -209 -166 3 dpI
+(S74LS32)1 1 0 -331 -456 3 dpI
+-288 -456 -304 -456 1 0 3 1 dpL
+-288 -456 -288 -408 1 0 3 1 dpL
+102 -84 102 -216 1 0 3 1 dpL
+-372 -216 102 -216 1 0 3 1 dpL
+-372 -444 -372 -216 1 0 3 1 dpL
+-352 -444 -372 -444 1 0 3 1 dpL
+24 -264 -15 -264 1 0 3 1 dpL
+0 -294 0 -264 1 0 3 1 dpL
+-108 -294 0 -294 1 0 3 1 dpL
+-108 -414 -108 -294 1 0 3 1 dpL
+-162 -414 -108 -414 1 0 3 1 dpL
+-162 -492 -162 -414 1 0 3 1 dpL
+-372 -468 -352 -468 1 0 3 1 dpL
+-372 -492 -372 -468 1 0 3 1 dpL
+-162 -492 -372 -492 1 0 3 1 dpL
+-186 -312 -186 -288 1 0 3 1 dpL
+-66 -312 -186 -312 1 0 3 1 dpL
+(R/W \(32\))-180 -240 1 3 1 dpS%48 9
+(SEDGE.IH)1 1 0 165 -246 3 dpI
+(SEDGE.IH)1 1 0 -333 -318 3 dpI
+(SEDGE.IH)1 1 0 -333 -330 3 dpI
+(SEDGE.IH)1 1 0 -333 -342 3 dpI
+(SEDGE.IH)1 1 0 -333 -354 3 dpI
+(SEDGE.IH)1 1 0 -333 -366 3 dpI
+(SEDGE.IH)1 1 0 -333 -378 3 dpI
+(D0)-348 -309 1 3 1 dpS%12 9
+(S74LS00)1 1 0 -41 -324 3 dpI
+(D1)-348 -321 1 3 1 dpS%12 9
+(D2)-348 -333 1 3 1 dpS%12 9
+(D3)-348 -345 1 3 1 dpS%12 9
+(D4)-348 -357 1 3 1 dpS%12 9
+(D5)-348 -369 1 3 1 dpS%12 9
+(D6)-348 -381 1 3 1 dpS%12 9
+(D7)-348 -393 1 3 1 dpS%12 9
+-216 -306 -240 -306 1 0 3 1 dpL
+-216 -318 -240 -318 1 0 3 1 dpL
+-216 -330 -240 -330 1 0 3 1 dpL
+-216 -342 -240 -342 1 0 3 1 dpL
+-216 -354 -240 -354 1 0 3 1 dpL
+-216 -366 -240 -366 1 0 3 1 dpL
+-216 -378 -240 -378 1 0 3 1 dpL
+-216 -390 -240 -390 1 0 3 1 dpL
+-264 -450 -264 -417 1 0 3 1 dpL
+(SRESISTOR)1 1 0 -198 -395 3 dpI
+(SLED)1 1 0 -208 -452 3 dpI
+-180 -456 -180 -390 1 0 3 1 dpL
+-180 -456 -198 -456 1 0 3 1 dpL
+-246 -456 -228 -456 1 0 3 1 dpL
+-246 -426 -246 -456 1 0 3 1 dpL
+(+5V)-240 -429 1 3 1 dpS%18 9
+108 -264 24 -264 1 0 3 1 dpL
+108 -90 108 -264 1 0 3 1 dpL
+174 216 174 66 1 0 3 1 dpL
+204 216 174 216 1 0 3 1 dpL
+-336 510 -336 480 1 0 3 1 dpL
+-336 414 -336 444 1 0 3 1 dpL
+(+5V)-351 513 1 3 1 dpS%18 9
+(-5V)-351 402 1 3 1 dpS%18 9
+(SSIPCOM)1 1 0 310 80 3 dpI
+-354 -114 -354 -180 1 0 3 1 dpL
+-42 -180 -354 -180 1 0 3 1 dpL
+-42 -165 -42 -180 1 0 3 1 dpL
+(SSIPCOM)1 1 0 -254 -88 3 dpI
+12 -126 30 -126 1 0 3 1 dpL
+30 -126 30 -174 1 0 3 1 dpL
+42 -174 30 -174 1 0 3 1 dpL
+42 -174 42 -162 1 0 3 1 dpL
+(SEDGE.I)1 1 0 165 -174 3 dpI
+(SEDGE.IH)1 1 0 165 -186 3 dpI
+(S6264)1 1 0 285 288 3 dpI
+(SEDGE.OH)1 1 0 51 -42 3 dpI
+(SEDGE.OH)1 1 0 51 -54 3 dpI
+(SEDGE.OH)1 1 0 51 -30 3 dpI
+(SEDGE.OH)1 1 0 51 -18 3 dpI
+(SEDGE.OH)1 1 0 51 -6 3 dpI
+(SEDGE.OH)1 1 0 51 6 3 dpI
+(SEDGE.OH)1 1 0 51 -66 3 dpI
+(SEDGE.O)1 1 0 51 18 3 dpI
+(D7)45 -69 1 3 1 dpS%12 9
+(D6)45 -57 1 3 1 dpS%12 9
+(D5)45 -45 1 3 1 dpS%12 9
+(D4)45 -33 1 3 1 dpS%12 9
+(D3)45 -21 1 3 1 dpS%12 9
+(D2)45 -9 1 3 1 dpS%12 9
+(D1)45 3 1 3 1 dpS%12 9
+(D0)45 15 1 3 1 dpS%12 9
+114 -324 12 -324 1 0 3 1 dpL
+114 -96 114 -324 1 0 3 1 dpL
+186 180 186 72 1 0 3 1 dpL
+204 180 186 180 1 0 3 1 dpL
+240 408 240 444 1 0 3 1 dpL
+240 444 213 444 1 0 3 1 dpL
+258 408 258 456 1 0 3 1 dpL
+258 456 213 456 1 0 3 1 dpL
+276 408 276 468 1 0 3 1 dpL
+276 468 213 468 1 0 3 1 dpL
+294 408 294 480 1 0 3 1 dpL
+294 480 213 480 1 0 3 1 dpL
+312 408 312 492 1 0 3 1 dpL
+312 492 213 492 1 0 3 1 dpL
+330 408 330 504 1 0 3 1 dpL
+330 504 213 504 1 0 3 1 dpL
+348 408 348 516 1 0 3 1 dpL
+348 516 213 516 1 0 3 1 dpL
+(SEDGE.IH)1 1 0 192 432 3 dpI
+(SEDGE.I)1 1 0 192 516 3 dpI
+222 408 222 432 1 0 3 1 dpL
+(SEDGE.IH)1 1 0 192 504 3 dpI
+(SEDGE.IH)1 1 0 192 492 3 dpI
+(SEDGE.IH)1 1 0 192 480 3 dpI
+(SEDGE.IH)1 1 0 192 468 3 dpI
+(SEDGE.IH)1 1 0 192 456 3 dpI
+(SEDGE.IH)1 1 0 192 444 3 dpI
+(D0)177 429 1 3 1 dpS%12 9
+(D1)177 441 1 3 1 dpS%12 9
+(D2)177 453 1 3 1 dpS%12 9
+(D3)177 465 1 3 1 dpS%12 9
+(D4)177 477 1 3 1 dpS%12 9
+(D5)177 489 1 3 1 dpS%12 9
+(D6)177 501 1 3 1 dpS%12 9
+(D7)177 513 1 3 1 dpS%12 9
+222 432 213 432 1 0 3 1 dpL
+240 -72 90 -72 1 0 3 1 dpL
+93 -30 123 -30 1 0 3 1 dpL
+93 -42 93 -60 1 0 3 1 dpL
+114 -42 93 -42 1 0 3 1 dpL
+114 -54 93 -54 1 0 3 1 dpL
+(SSIPCOM)1 1 0 103 2 3 dpI
+84 -84 84 -84 1 0 3 1 dpL
+246 -78 96 -78 1 0 3 1 dpL
+(SGND)1 1 0 100 -60 3 dpI
+231 -36 240 -36 1 0 3 1 dpL
+240 -36 240 -72 1 0 3 1 dpL
+231 -48 246 -48 1 0 3 1 dpL
+246 -48 246 -78 1 0 3 1 dpL
+231 36 246 36 1 0 3 1 dpL
+246 36 246 60 1 0 3 1 dpL
+180 60 246 60 1 0 3 1 dpL
+231 -24 252 -24 1 0 3 1 dpL
+252 -24 252 -84 1 0 3 1 dpL
+102 -84 252 -84 1 0 3 1 dpL
+258 -90 108 -90 1 0 3 1 dpL
+258 -90 258 66 1 0 3 1 dpL
+174 66 258 66 1 0 3 1 dpL
+264 -96 114 -96 1 0 3 1 dpL
+264 -96 264 72 1 0 3 1 dpL
+186 72 264 72 1 0 3 1 dpL
+222 -120 222 -156 1 0 3 1 dpL
+240 -120 240 -156 1 0 3 1 dpL
+258 -120 258 -156 1 0 3 1 dpL
+276 -120 276 -156 1 0 3 1 dpL
+294 -120 294 -156 1 0 3 1 dpL
+312 -120 312 -156 1 0 3 1 dpL
+330 -120 330 -156 1 0 3 1 dpL
+348 -120 348 -156 1 0 3 1 dpL
+(D0 D1 D2 D3 D4 D5 D6 D7)216 -120 1 3 1 dpS%138 9
+180 204 204 204 1 0 3 1 dpL
+180 402 180 204 1 0 3 1 dpL
+132 402 180 402 1 0 3 1 dpL
+(SSIPCOM)1 1 0 -368 227 3 dpI
+-90 -336 -66 -336 1 0 3 1 dpL
+-90 -336 -90 -192 1 0 3 1 dpL
+-90 -252 -66 -252 1 0 3 1 dpL
+(E \(34\))-84 -234 1 3 1 dpS%36 9
+42 222 42 297 1 0 3 1 dpL
+-216 -126 -216 -150 1 0 3 1 dpL
+-216 -150 -210 -156 1 0 3 1 dpL
+-216 -168 -216 -156 1 0 3 1 dpL
+(SGND)1 1 0 -131 123 3 dpI
+(RESET)-204 -156 1 3 1 dpS%30 9
+(DIGITAL)-203 -346 1 3 1 dpS%42 9
+(OUTPUTS)-203 -355 1 3 1 dpS%42 9
+(SSIPCOM)1 1 0 -8 338 3 dpI
+(= 4.7K)326 76 1 3 1 dpS%36 9
+282 42 282 114 1 0 3 1 dpL
+372 114 282 114 1 0 3 1 dpL
+(CD4060B)-168 477 1 3 1 dpS%42 9
+(16)1 -108 486 3 1 dpP
+(15)1 -108 468 3 1 dpP
+(14)1 -108 450 3 1 dpP
+(13)1 -108 432 3 1 dpP
+(12)1 -108 414 3 1 dpP
+(11)1 -108 396 3 1 dpP
+(10)1 -108 378 3 1 dpP
+(9)1 -108 360 3 1 dpP
+(8)2 -186 360 3 1 dpP
+(7)2 -186 378 3 1 dpP
+(6)2 -186 396 3 1 dpP
+(5)2 -186 414 3 1 dpP
+(4)2 -186 432 3 1 dpP
+(3)2 -186 450 3 1 dpP
+(2)2 -186 468 3 1 dpP
+(1)2 -186 486 3 1 dpP
+(OSC2)-137 374 1 3 1 dpS%24 9
+(OSC1)-137 392 1 3 1 dpS%24 9
+-186 498 -108 498 1 0 3 1 dpL
+-186 498 -186 354 1 0 3 1 dpL
+-186 354 -108 354 1 0 3 1 dpL
+-108 498 -108 354 1 0 3 1 dpL
+30 474 -54 474 1 0 3 1 dpL
+372 42 282 42 1 0 3 1 dpL
+372 114 372 42 1 0 3 1 dpL
+(/usr/russ/6809board.dp)24 -507 1 3 1 dpS%132 9
+(S74LS138)1 1 0 172 -6 3 dpI
+150 66 12 66 1 0 3 1 dpL
+150 36 168 36 1 0 3 1 dpL
+150 36 150 66 1 0 3 1 dpL
+144 54 12 54 1 0 3 1 dpL
+144 12 144 54 1 0 3 1 dpL
+144 12 168 12 1 0 3 1 dpL
+138 42 12 42 1 0 3 1 dpL
+138 -12 138 42 1 0 3 1 dpL
+138 -12 168 -12 1 0 3 1 dpL
+93 -24 93 -30 1 0 3 1 dpL
+(33)2 -102 -138 3 1 dpP
+(DMA/BREQ)-96 -143 6 3 1 dpS%48 9
+(RESET)-96 -131 6 3 1 dpS%30 9
+(S$$01:00:25)1 1 0 -15 -159 3 dpI
+(S$$01:00:23)1 1 0 -43 -159 3 dpI
+(S$$01:00:19)1 1 0 -73 -159 3 dpI
+(S$$01:23:27)1 1 0 -24 234 3 dpI
+(S$$01:23:26)1 1 0 -60 234 3 dpI
+(37)2 -102 -126 3 1 dpP
+(40)2 -102 -114 3 1 dpP
+(5)2 -102 -102 3 1 dpP
+(6)2 -102 -90 3 1 dpP
+(BS)-96 -107 1 3 1 dpS%12 9
+(BA)-96 -95 1 3 1 dpS%12 9
+(HALT)-96 -119 6 3 1 dpS%24 9
+(S6809D)1 1 0 -93 -25 3 dpI
+(S6809AD)1 1 0 1 77 3 dpI
+(S6809A)1 1 0 -90 131 3 dpI
+(CPU)-54 177 2 3 1 dpS%27 13
+-102 -165 -102 240 1 0 3 1 dpL
+12 -165 -102 -165 1 0 3 1 dpL
+12 -165 12 240 1 0 3 1 dpL
+-102 240 12 240 1 0 3 1 dpL
+(S6809MEMCON)1 1 0 -2 -109 3 dpI
+(68B09)-60 195 2 3 1 dpS%45 13
+-324 234 -324 96 1 0 3 1 dpL
+-174 234 -174 96 1 0 3 1 dpL
+(13)2 -324 150 3 1 dpP
+(R/W)-319 145 6 3 1 dpS%18 9
+(E)-319 133 1 3 1 dpS%6 9
+(5)1 -174 120 3 1 dpP
+(6)1 -174 180 3 1 dpP
+(2)1 -174 168 3 1 dpP
+(3)1 -174 204 3 1 dpP
+(4)1 -174 216 3 1 dpP
+(14)2 -324 138 3 1 dpP
+(CS1)-319 175 1 3 1 dpS%18 9
+(CS2)-319 163 6 3 1 dpS%18 9
+(CS0)-319 187 1 3 1 dpS%18 9
+(8)2 -324 192 3 1 dpP
+(10)2 -324 180 3 1 dpP
+(9)2 -324 168 3 1 dpP
+(Tx CLK)-213 211 1 3 1 dpS%36 9
+(Rx CLK)-213 199 1 3 1 dpS%36 9
+(Tx DATA)-219 175 1 3 1 dpS%42 9
+(Rx DATA)-219 163 1 3 1 dpS%42 9
+(DCD)-195 127 6 3 1 dpS%18 9
+(RTS)-195 115 6 3 1 dpS%18 9
+(CTS)-195 139 6 3 1 dpS%18 9
+(24)1 -174 144 3 1 dpP
+(23)1 -174 132 3 1 dpP
+(7)2 -324 114 3 1 dpP
+(IRQ)-319 109 6 3 1 dpS%18 9
+-324 96 -174 96 1 0 3 1 dpL
+(D0)-317 99 1 3 1 dpS%12 9
+(D1)-299 99 1 3 1 dpS%12 9
+(D2)-281 99 1 3 1 dpS%12 9
+(D3)-263 99 1 3 1 dpS%12 9
+(D4)-245 99 1 3 1 dpS%12 9
+(D5)-227 99 1 3 1 dpS%12 9
+(D6)-209 99 1 3 1 dpS%12 9
+(D7)-191 99 1 3 1 dpS%12 9
+(21)4 -294 96 3 1 dpP
+(15)4 -186 96 3 1 dpP
+(16)4 -204 96 3 1 dpP
+(17)4 -222 96 3 1 dpP
+(18)4 -240 96 3 1 dpP
+(20)4 -276 96 3 1 dpP
+(22)4 -312 96 3 1 dpP
+(19)4 -258 96 3 1 dpP
+(RS)-319 211 1 3 1 dpS%12 9
+(11)2 -324 216 3 1 dpP
+(D7)-191 222 1 3 1 dpS%12 9
+(D6)-209 222 1 3 1 dpS%12 9
+(D5)-227 222 1 3 1 dpS%12 9
+(D4)-245 222 1 3 1 dpS%12 9
+(D3)-263 222 1 3 1 dpS%12 9
+(D2)-281 222 1 3 1 dpS%12 9
+(D1)-299 222 1 3 1 dpS%12 9
+(D0)-317 222 1 3 1 dpS%12 9
+-174 234 -324 234 1 0 3 1 dpL
+(19)1 -258 234 3 1 dpP
+(22)1 -312 234 3 1 dpP
+(20)1 -276 234 3 1 dpP
+(18)1 -240 234 3 1 dpP
+(17)1 -222 234 3 1 dpP
+(16)1 -204 234 3 1 dpP
+(15)1 -186 234 3 1 dpP
+(21)1 -294 234 3 1 dpP
+(68B50)-276 198 2 3 1 dpS%45 13
+(SSIPCOM)1 1 0 142 428 3 dpI
+48 312 -18 312 1 0 3 1 dpL
+48 312 48 372 1 0 3 1 dpL
+156 -336 3 dpD
+156 -348 3 dpD
+12 78 3 dpD
+12 90 3 dpD
+12 102 3 dpD
+12 114 3 dpD
+12 126 3 dpD
+12 138 3 dpD
+12 150 3 dpD
+12 162 3 dpD
+12 174 3 dpD
+12 186 3 dpD
+12 198 3 dpD
+12 210 3 dpD
+42 222 3 dpD
+12 222 3 dpD
+12 18 3 dpD
+12 6 3 dpD
+12 -6 3 dpD
+12 -18 3 dpD
+12 -30 3 dpD
+12 -42 3 dpD
+12 -54 3 dpD
+12 -66 3 dpD
+-324 168 3 dpD
+-324 150 3 dpD
+-186 -198 3 dpD
+12 -90 3 dpD
+-324 138 3 dpD
+-90 -192 3 dpD
+12 -102 3 dpD
+-108 414 3 dpD
+-186 450 3 dpD
+-216 414 3 dpD
+-216 396 3 dpD
+-216 378 3 dpD
+-186 378 3 dpD
+-186 396 3 dpD
+-186 414 3 dpD
+-186 432 3 dpD
+-108 378 3 dpD
+-108 396 3 dpD
+30 474 3 dpD
+78 489 3 dpD
+-63 240 3 dpD
+-102 -66 3 dpD
+-186 96 3 dpD
+-102 -54 3 dpD
+-204 96 3 dpD
+-222 96 3 dpD
+-102 -42 3 dpD
+-102 -30 3 dpD
+-240 96 3 dpD
+-258 96 3 dpD
+-102 -18 3 dpD
+-102 -6 3 dpD
+-276 96 3 dpD
+-294 96 3 dpD
+-102 6 3 dpD
+-102 18 3 dpD
+-312 96 3 dpD
+-324 216 3 dpD
+-138 132 3 dpD
+-174 144 3 dpD
+-174 132 3 dpD
+-324 180 3 dpD
+-324 192 3 dpD
+-378 192 3 dpD
+-174 204 3 dpD
+-150 216 3 dpD
+-174 216 3 dpD
+-102 -114 3 dpD
+-216 -126 3 dpD
+-102 -126 3 dpD
+-102 -138 3 dpD
+-72 -165 3 dpD
+-324 114 3 dpD
+-15 -165 3 dpD
+-174 180 3 dpD
+-174 168 3 dpD
+12 -324 3 dpD
+-186 -264 3 dpD
+-186 -288 3 dpD
+-24 240 3 dpD
+0 -264 3 dpD
+24 -264 3 dpD
+-42 -165 3 dpD
+12 -126 3 dpD
+93 -54 3 dpD
+-90 -252 3 dpD
+12 66 3 dpD
+12 54 3 dpD
+12 42 3 dpD
+dpDone
+%%%Trailer
+%%BoundingBox: 0 0 564 757
+%%(in points)
+%%%BoundingBox: 0 0 7.84 10.52 %in inches
+%%%DocumentFonts: Times Helvetica Courier
