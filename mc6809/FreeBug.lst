@@ -1,0 +1,280 @@
+0001                         * FreeBug - Monitor ROM for the Free 6809
+0002                         * by Russell Hoffman 1992
+0003                         
+0004 c000                    ACIA	EQU $C000 Acia base address
+0005 a000                    PPORT	EQU $A000 Data port address
+0006 0100                    STACKTOP	EQU $0100
+0007 0000                    	ORG 0
+0008 0000                    JRESV	RMB 2
+0009 0002                    JSWI3	RMB 2
+0010 0004                    JSWI2	RMB 2
+0011 0006                    JFIRQ	RMB 2
+0012 0008                    JIRQ	RMB 2
+0013 000a                    JSWIV	RMB 2
+0014 000c                    JNMI	RMB 2
+0015 000e                    ECHO RMB 1
+0016 000f                    CKSUM RMB 2
+0017 0011                    TMP1 RMB 2
+0018 0013                    TMP2 RMB 2
+0019                         	
+0020 f800                    	ORG $F800
+0021 f800 f8 7b              	FDB SEROUT
+0022 f802 f8 5e              	FDB GETC
+0023 f804 f8 70              	FDB PRINTF
+0024 f806 f8 24              	FDB GETBYT
+0025 f808 f8 0a              	FDB GETADR
+0026                         *
+0027                         * X register gets 16-bit hex address
+0028                         *
+0029 f80a 34 06              GETADR	pshs D
+0030 f80c 8d 16              	bsr GETBYT
+0031 f80e 26 0f              	bne BADADR
+0032 f810 1f 89              	tfr a,b
+0033 f812 8d 10              	bsr GETBYT
+0034 f814 26 09              	bne BADADR
+0035 f816 1e 98              	exg b,a
+0036 f818 1f 01              	tfr d,x
+0037 f81a 35 06              	puls D
+0038 f81c 1a 04              	orcc #$04
+0039 f81e 39                 	rts
+0040 f81f 35 06              BADADR	puls D
+0041 f821 1c fb              	andcc #$fb
+0042 f823 39                 	rts
+0043                         
+0044 f824 8d 18              GETBYT	bsr HEXIN
+0045 f826 26 13              	bne BADBYT
+0046 f828 97 11              	sta TMP1
+0047 f82a 8d 12              	bsr HEXIN
+0048 f82c 26 0d              	bne BADBYT
+0049 f82e 97 13              	sta TMP2
+0050 f830 96 11              	lda TMP1
+0051 f832 48                 	asla
+0052 f833 48                 	asla
+0053 f834 48                 	asla
+0054 f835 48                 	asla
+0055 f836 9b 13              	adda TMP2
+0056 f838 1a 04              	orcc #$04 set Z bit
+0057 f83a 39                 	rts
+0058 f83b 1c fb              BADBYT	andcc #$fb	clear Z bit
+0059 f83d 39                 	rts
+0060                         	
+0061                         *
+0062                         *      HEXADECIMAL DIGIT INPUT ROUTINE
+0063                         * (Taken from Chuck Adams' HUMBUG )
+0064                         *   INPUT A SINGLE HEX DIGIT TO ACCA VIA ACIA.  IF THE
+0065                         *      INPUT CHARACTER IS A HEX DIGIT IT IS CONVERTED
+0066                         *      TO BINARY IN ACCA AND BIT Z OF CCR IS SET.  IF
+0067                         *      THE INPUT IS A NONHEX CHARACTER, IT IS RETURNED
+0068                         *      IN ACCA AND BIT Z IS RESET.
+0069                         *
+0070 f83e 8d 1e              HEXIN BSR GETC GET CHARACTER
+0071 f840 81 30               CMPA #'0 TEST FOR DIGIT
+0072 f842 25 17               BLO HEXN INVALID, RETURN
+0073 f844 81 39               CMPA #'9
+0074 f846 22 04               BHI HEXLT
+0075 f848 80 30               SUBA #'0 CONVERT TO BINARY
+0076 f84a 20 0c               BRA HEXINR
+0077 f84c 84 df              HEXLT	anda #$df	upper-case-ize
+0078 f84e 81 41               CMPA #'A TEST FOR A-F
+0079 f850 25 09               BLO HEXN INVALID, RETURN
+0080 f852 81 46               CMPA #'F
+0081 f854 22 05               BHI HEXN INVALID, RETURN
+0082 f856 80 37               SUBA #$37 CONVERT TO BINARY
+0083 f858 1a 04              HEXINR ORCC #$04 SET BIT Z
+0084 f85a 39                  RTS
+0085 f85b 1c fb              HEXN ANDCC #$FB RESET BIT Z
+0086 f85d 39                  RTS
+0087                         
+0088                         *
+0089                         * get a character via polling ACIA into A
+0090                         *
+0091 f85e b6 c0 00           GETC	lda ACIA
+0092 f861 85 01              	bita	#1
+0093 f863 27 f9              	beq	GETC
+0094 f865 b6 c0 01           	lda ACIA+1
+0095 f868 0d 0e              	tst ECHO
+0096 f86a 26 01              	bne	GET2
+0097 f86c 39                 	rts
+0098 f86d 8d 0c              GET2	bsr SEROUT
+0099 f86f 39                 	rts
+0100                         *
+0101                         * Output a string pointed to by X, terminated with $04
+0102                         *
+0103 f870 a6 80              PRINTF	LDA ,X+
+0104 f872 81 04              	CMPA #04
+0105 f874 26 01              	BNE PRINT2
+0106 f876 39                 	RTS
+0107 f877 8d 02              PRINT2	BSR SEROUT
+0108 f879 20 f5              	BRA PRINTF
+0109                         *
+0110                         * Output character in A register
+0111                         *
+0112 f87b 34 04              SEROUT	PSHS B
+0113 f87d f6 c0 00           SER1	LDB ACIA
+0114 f880 c5 02              	BITB #02
+0115 f882 27 f9              	BEQ SER1
+0116 f884 b7 c0 01           	STA ACIA+1
+0117 f887 35 04              	PULS B
+0118 f889 39                 	RTS
+0119                         
+0120                         *
+0121                         * Interrupt vector jumptable
+0122                         *
+0123 f88a 3b                 RETINT	RTI
+0124 f88b 6e 9f 00 02        SWI3	JMP [JSWI3]
+0125 f88f 6e 9f 00 04        SWI2	JMP [JSWI2]
+0126 f893 6e 9f 00 06        FIRQ	JMP [JFIRQ]
+0127 f897 6e 9f 00 08        IRQ	JMP [JIRQ]
+0128 f89b 6e 9f 00 0a        SWIV	JMP [JSWIV]
+0129 f89f 6e 9f 00 0c        NMI	JMP [JNMI]
+0130                         
+0131                         *
+0132                         * BEGIN - start monitor execution
+0133                         *
+0134 f8a3 1a ff              BEGIN	orcc #$ff turn off interrupts
+0135 f8a5 4f                 	CLRA
+0136 f8a6 1f 8b              	tfr a,dp
+0137 f8a8 10 ce 01 00        	LDS #STACKTOP  setup system stack
+0138 f8ac 8e 00 00           	LDX #JRESV
+0139 f8af cc f8 8a           	LDD #RETINT
+0140 f8b2 ed 81              	STD 0,X++	setup interrupt jumptable
+0141 f8b4 ed 81              	STD 0,X++
+0142 f8b6 ed 81              	STD 0,X++
+0143 f8b8 ed 81              	STD 0,X++
+0144 f8ba ed 81              	STD 0,X++
+0145 f8bc ed 81              	STD 0,X++
+0146 f8be ed 81              	STD 0,X++
+0147 f8c0 86 03              	LDA #$03 reset ACIA
+0148 f8c2 b7 c0 00           	STA ACIA
+0149 f8c5 86 15              	LDA #$15 init ACIA
+0150 f8c7 b7 c0 00           	STA ACIA
+0151 f8ca 8e f9 66           	LDX #HELLO
+0152 f8cd bd f8 70           	JSR PRINTF say hello
+0153                         	
+0154 f8d0 8e f9 7c           CMD	LDX #CMDPROMPT Get next cmd
+0155 f8d3 bd f8 70           	JSR PRINTF
+0156 f8d6 86 01              	LDA #1
+0157 f8d8 97 0e              	STA ECHO Turn echo on
+0158 f8da bd f8 5e           	JSR GETC
+0159 f8dd 81 7f              	cmpa #$7f
+0160 f8df 2e 2e              	bgt BOGUS
+0161 f8e1 81 0d              	cmpa #$0d
+0162 f8e3 27 32              	beq CRPRESS
+0163 f8e5 81 3f              	CMPA #'?
+0164 f8e7 27 10              	beq HELP
+0165 f8e9 81 73              	cmpa #'s
+0166 f8eb 27 31              	beq SREC
+0167 f8ed 81 6a              	cmpa #'j
+0168 f8ef 27 10              	beq JUMP
+0169 f8f1 8e f9 7f           CMHUH	ldx #HUH
+0170 f8f4 bd f8 70           	jsr PRINTF
+0171 f8f7 20 d7              	bra CMD
+0172                         
+0173 f8f9 8e f9 a8           HELP	ldx #HELPMSG
+0174 f8fc bd f8 70           	jsr PRINTF
+0175 f8ff 20 cf              	bra CMD
+0176                         
+0177 f901 86 20              JUMP	LDA #$20
+0178 f903 bd f8 7b           	jsr SEROUT
+0179 f906 bd f8 0a           	JSR GETADR
+0180 f909 26 e6              	bne	CMHUH
+0181 f90b ad 84              	jsr ,X
+0182 f90d 20 c1              	bra CMD
+0183                         
+0184 f90f 8e f9 85           BOGUS	LDX #BMSG
+0185 f912 bd f8 70           	jsr	PRINTF
+0186 f915 20 b9              	BRA CMD
+0187                         
+0188 f917 86 0a              CRPRESS	LDA #$0a
+0189 f919 bd f8 7b           	JSR SEROUT
+0190 f91c 20 b2              	BRA CMD
+0191                         
+0192 f91e 0f 0e              SREC	CLR ECHO
+0193                         	
+0194                         *
+0195                         *       LOAD/VERIFY FROM S FORMAT TAPE
+0196                         *	Adapted from Chuck Adams' HUMBUG
+0197                         
+0198 f920 c6 ff              LOAD LDB #$FF SET LOAD/VERIFY FLAG
+0199 f922 20 01               BRA LDVF
+0200 f924 5f                 VERIFY CLRB        CLEAR LOAD/VERIFY FLAG
+0201 f925 34 04              LDVF PSHS B
+0202 f927 0f 0f              LNXTLN CLR CKSUM ZERO CHECKSUM
+0203 f929 bd f8 5e           LNXTCH JSR GETC
+0204 f92c 81 53               CMPA #'S SEARCH FOR RECORD
+0205 f92e 26 f9               BNE LNXTCH
+0206 f930 bd f8 5e            JSR GETC
+0207 f933 81 39               CMPA #'9 S9 - EXIT
+0208 f935 27 2c               BEQ LVEXIT
+0209 f937 81 31               CMPA #'1 S1 - BEGINNING OF RECORD
+0210 f939 26 ee               BNE LNXTCH
+0211 f93b bd f8 24            JSR GETBYT GET BYTE COUNT
+0212 f93e 26 23               BNE LVEXIT
+0213 f940 34 02               PSHS A
+0214 f942 bd f8 0a            JSR GETADR GET ADDRESS
+0215 f945 26 1c               BNE LVEXIT
+0216 f947 35 04               PULS B PULL BYTE COUNT
+0217 f949 c0 02               SUBB #2 	;	ADJUST BYTE COUNT
+0218 f94b bd f8 24           LBYTLP JSR GETBYT READ NEXT BYTE
+0219 f94e 26 13               BNE LVEXIT
+0220 f950 5a                  DECB
+0221 f951 27 0c               BEQ LELP LADS BYTE
+0222 f953 6d e4               TST ,S TEST LOAD/VERIFY FLAG
+0223 f955 27 02               BEQ LVFY
+0224 f957 a7 84               STA ,X IF LOAD THEN STORE BYTE
+0225 f959 a1 80              LVFY CMPA ,X+ VERIFY INPUT BYTE
+0226 f95b 26 06               BNE LVEXIT
+0227 f95d 20 ec               BRA LBYTLP
+0228 f95f 0c 0f              LELP INC CKSUM TEST CHECKSUM
+0229 f961 27 c4               BEQ LNXTLN
+0230 f963 7e f8 d0           LVEXIT JMP CMD
+0231                         
+0232 f966 0d 0a              HELLO	FCB $0d, $0a
+0233 f968 46 72 65 65 42 75  	FCC "FreeBug 6809 v1.0"
+     67 20 36 38 30 39
+     20 76 31 2e 30
+0234 f979 0d 0a 04           	FCB $0d, $0a, $04
+0235 f97c 3e 20              CMDPROMPT	FCC "> "
+0236 f97e 04                 	FCB	$04
+0237 f97f 3f 3f 3f           HUH	FCC "???"
+0238 f982 0d 0a 04           	FCB $0d, $0a, $04
+0239                         
+0240 f985 59 6f 75 72 20 74  BMSG	FCC "Your terminal is setting the MSB"
+     65 72 6d 69 6e 61
+     6c 20 69 73 20 73
+     65 74 74 69 6e 67
+     20 74 68 65 20 4d
+     53 42
+0241 f9a5 0d 0a 04           	FCB $0d, $0a, $04
+0242                         
+0243 f9a8 0d 0a 0a 0a        HELPMSG	FCB $0d,$0a, $0a, $0a
+0244 f9ac 2d 2d 2d 2d 20 46  	FCC	"---- FreeBug v1.0 Help ----"
+     72 65 65 42 75 67
+     20 76 31 2e 30 20
+     48 65 6c 70 20 2d
+     2d 2d 2d
+0245 f9c7 0d 0a 0a           	FCB $0d, $0a, $0a
+0246 f9ca 3f 20 2d 20 68 65  	FCC "? - help"
+     6c 70
+0247 f9d2 0d 0a              	FCB $0d, $0a
+0248 f9d4 73 20 2d 20 64 6f  	FCC "s - download s-records"
+     77 6e 6c 6f 61 64
+     20 73 2d 72 65 63
+     6f 72 64 73
+0249 f9ea 0d 0a              	FCB $0d, $0a
+0250 f9ec 6a 20 2d 20 6a 75  	FCC "j - jump to code"
+     6d 70 20 74 6f 20
+     63 6f 64 65
+0251 f9fc 0d 0a 0a 0a 04     	FCB $0d, $0a, $0a, $0a, $04
+0252                         
+0253 fff0                     ORG $FFF0	Reset and interrupt vectors.
+0254 fff0 f8 a3               FDB BEGIN	
+0255 fff2 f8 8b               FDB SWI3	
+0256 fff4 f8 8f               FDB SWI2	
+0257 fff6 f8 93               FDB FIRQ	
+0258 fff8 f8 97               FDB IRQ	
+0259 fffa f8 9b               FDB SWIV	
+0260 fffc f8 9f               FDB NMI	
+0261 fffe f8 a3               FDB BEGIN	
+0262                         
+0263                         
